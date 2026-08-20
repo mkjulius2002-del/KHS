@@ -1,316 +1,456 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Apply to Kongunga High School</title>
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="/KHS/css/main.css" />
     <style>
-        /* Application Form Styles */
-        .apply-container {
-            max-width: 900px;
-            margin: 40px auto;
-            padding: 20px;
+        /* ----- global reset / base ----- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
+            background: #f4f7fa;
+            color: #1e2b37;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
 
-        .step-indicator {
+        /* ----- top bar / header / nav (matching your site) ----- */
+        .top-bar {
+            background: #0f293b;
+            color: #fff;
+            padding: 8px 0;
+            font-size: 14px;
+        }
+        .top-bar .container {
             display: flex;
-            justify-content: center;
-            margin-bottom: 40px;
-            gap: 10px;
+            justify-content: space-between;
+            flex-wrap: wrap;
         }
-
-        .step-circle {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: #ddd;
-            color: #666;
+        .top-bar .contact-info span {
+            margin-right: 20px;
+        }
+        header {
+            background: #fff;
+            padding: 15px 0;
+            border-bottom: 2px solid #e0e7ed;
+        }
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .logo {
             display: flex;
             align-items: center;
-            justify-content: center;
-            font-weight: bold;
+            gap: 12px;
+        }
+        .css-logo {
+            background: #1a3a4f;
+            color: #fff;
+            font-weight: 800;
+            font-size: 26px;
+            padding: 6px 14px;
+            border-radius: 8px;
+        }
+        .logo-text h1 {
+            font-size: 24px;
+            color: #1a3a4f;
+        }
+        .logo-text h1 span {
+            color: #e67e22;
+        }
+        .logo-text p {
+            font-size: 13px;
+            color: #666;
+            letter-spacing: 1px;
+        }
+
+        nav {
+            background: #1a3a4f;
+            padding: 0;
+        }
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 0;
+            flex-wrap: wrap;
+        }
+        nav ul li a {
+            display: block;
+            padding: 14px 22px;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 15px;
+            transition: background 0.2s;
+        }
+        nav ul li a:hover,
+        nav ul li a.active {
+            background: #e67e22;
+        }
+
+        /* ----- main apply container ----- */
+        .apply-container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px 60px;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 30px;
+            color: #1a3a4f;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .page-title {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .page-title h1 {
+            font-size: 36px;
+            color: #1a3a4f;
+        }
+        .page-title p {
+            color: #666;
             font-size: 18px;
         }
 
+        /* ----- step indicator ----- */
+        .step-indicator {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            margin: 40px 0 50px;
+        }
+        .step-circle {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: #d0d8e0;
+            color: #555;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 18px;
+            transition: 0.3s;
+        }
         .step-circle.active {
             background: #1a3a4f;
-            color: white;
+            color: #fff;
         }
-
         .step-circle.completed {
             background: #27ae60;
-            color: white;
+            color: #fff;
         }
-
         .step-line {
             width: 50px;
-            height: 3px;
-            background: #ddd;
-            align-self: center;
+            height: 4px;
+            background: #d0d8e0;
+            border-radius: 4px;
+            transition: 0.3s;
         }
-
         .step-line.active {
             background: #1a3a4f;
         }
 
+        /* ----- step content ----- */
         .step-content {
             display: none;
-            animation: fadeIn 0.5s ease;
+            animation: fadeUp 0.4s ease;
         }
-
         .step-content.active {
             display: block;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        @keyframes fadeUp {
+            0% {
+                opacity: 0;
+                transform: translateY(24px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
-        .level-selection {
+        /* ----- level cards (O / A) ----- */
+        .level-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 30px;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .level-card {
-            padding: 40px 20px;
-            text-align: center;
-            background: #f8f9fa;
-            border-radius: 12px;
-            border: 3px solid #e0e0e0;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .level-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-
-        .level-card.selected {
-            border-color: #1a3a4f;
-            background: #e8f0f5;
-        }
-
-        .level-card h3 {
-            font-size: 32px;
-            margin-bottom: 10px;
-            color: #1a3a4f;
-        }
-
-        .level-card p {
-            color: #666;
-            font-size: 14px;
-        }
-
-        .level-card .icon {
-            font-size: 50px;
-            display: block;
-            margin-bottom: 15px;
-        }
-
-        .stream-selection {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .stream-card {
-            padding: 30px 20px;
-            text-align: center;
-            background: #f8f9fa;
-            border-radius: 12px;
-            border: 3px solid #e0e0e0;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .stream-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-
-        .stream-card.selected {
-            border-color: #1a3a4f;
-            background: #e8f0f5;
-        }
-
-        .stream-card h3 {
-            font-size: 28px;
-            margin-bottom: 10px;
-            color: #1a3a4f;
-        }
-
-        .stream-card .icon {
-            font-size: 40px;
-            display: block;
-            margin-bottom: 10px;
-        }
-
-        .stream-card ul {
-            list-style: none;
-            padding: 0;
-            font-size: 14px;
-            color: #555;
-        }
-
-        .stream-card ul li {
-            padding: 3px 0;
-        }
-
-        .form-container {
-            background: #f8f9fa;
-            padding: 40px;
-            border-radius: 12px;
             max-width: 700px;
             margin: 0 auto;
         }
-
-        .form-container h2 {
-            color: #1a3a4f;
-            margin-bottom: 5px;
+        .level-card {
+            background: #fff;
+            border: 3px solid #e0e7ed;
+            border-radius: 16px;
+            padding: 40px 20px;
             text-align: center;
+            cursor: pointer;
+            transition: 0.25s;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+        }
+        .level-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+        }
+        .level-card.selected {
+            border-color: #1a3a4f;
+            background: #eaf1f7;
+        }
+        .level-card .icon {
+            font-size: 48px;
+            display: block;
+            margin-bottom: 12px;
+        }
+        .level-card h3 {
+            font-size: 30px;
+            color: #1a3a4f;
+        }
+        .level-card p {
+            color: #556b7c;
+            font-size: 15px;
+            margin-top: 4px;
         }
 
-        .form-container .subtitle {
+        /* ----- stream cards (Arts / Science) ----- */
+        .stream-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .stream-card {
+            background: #fff;
+            border: 3px solid #e0e7ed;
+            border-radius: 16px;
+            padding: 32px 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: 0.25s;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+        }
+        .stream-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+        }
+        .stream-card.selected {
+            border-color: #1a3a4f;
+            background: #eaf1f7;
+        }
+        .stream-card .icon {
+            font-size: 40px;
+            display: block;
+            margin-bottom: 8px;
+        }
+        .stream-card h3 {
+            font-size: 26px;
+            color: #1a3a4f;
+        }
+        .stream-card ul {
+            list-style: none;
+            padding: 0;
+            margin: 12px 0 0;
+            font-size: 14px;
+            color: #556b7c;
+        }
+        .stream-card ul li {
+            padding: 2px 0;
+        }
+
+        /* ----- form container ----- */
+        .form-wrap {
+            background: #fff;
+            border-radius: 16px;
+            padding: 40px 36px;
+            max-width: 760px;
+            margin: 0 auto;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+        }
+        .form-wrap h2 {
+            color: #1a3a4f;
+            font-size: 28px;
+            text-align: center;
+        }
+        .form-wrap .sub {
             text-align: center;
             color: #666;
             margin-bottom: 30px;
+            font-size: 16px;
         }
 
         .form-group {
             margin-bottom: 20px;
         }
-
         .form-group label {
             display: block;
             font-weight: 600;
             margin-bottom: 5px;
-            color: #333;
+            font-size: 14px;
+            color: #1e2b37;
         }
-
         .form-group input,
         .form-group select,
         .form-group textarea {
             width: 100%;
-            padding: 12px 15px;
-            border: 2px solid #ddd;
-            border-radius: 8px;
-            font-size: 16px;
-            transition: border-color 0.3s;
+            padding: 12px 14px;
+            border: 2px solid #dce3ea;
+            border-radius: 10px;
+            font-size: 15px;
+            transition: 0.2s;
+            background: #fafcfe;
         }
-
         .form-group input:focus,
         .form-group select:focus,
         .form-group textarea:focus {
             border-color: #1a3a4f;
             outline: none;
+            background: #fff;
         }
-
         .form-group textarea {
+            min-height: 90px;
             resize: vertical;
-            min-height: 100px;
         }
-
         .form-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 20px;
         }
 
+        /* ----- buttons ----- */
         .btn {
-            padding: 12px 30px;
-            border: none;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-            text-decoration: none;
             display: inline-block;
+            padding: 12px 34px;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.2s;
+            text-decoration: none;
         }
-
         .btn-primary {
             background: #1a3a4f;
-            color: white;
+            color: #fff;
         }
-
         .btn-primary:hover {
             background: #0f293b;
             transform: translateY(-2px);
         }
-
         .btn-secondary {
-            background: #e0e0e0;
-            color: #333;
+            background: #e0e7ed;
+            color: #1e2b37;
         }
-
         .btn-secondary:hover {
-            background: #ccc;
+            background: #cdd6df;
         }
-
         .btn-success {
             background: #27ae60;
-            color: white;
+            color: #fff;
         }
-
         .btn-success:hover {
-            background: #1e8449;
+            background: #1e8a4c;
+            transform: translateY(-2px);
         }
-
         .btn-group {
             display: flex;
-            gap: 15px;
+            gap: 16px;
             justify-content: center;
-            margin-top: 30px;
+            flex-wrap: wrap;
+            margin-top: 28px;
         }
 
-        .back-link {
-            display: inline-block;
-            margin-bottom: 20px;
-            color: #1a3a4f;
+        /* ----- footer ----- */
+        footer {
+            background: #0f293b;
+            color: #cbd8e3;
+            padding: 40px 0 20px;
+            margin-top: 40px;
+        }
+        footer .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 30px;
+        }
+        footer h3,
+        footer h4 {
+            color: #fff;
+        }
+        footer ul {
+            list-style: none;
+            padding: 0;
+        }
+        footer ul li a {
+            color: #cbd8e3;
             text-decoration: none;
-            font-weight: 600;
+            font-size: 14px;
+            line-height: 2;
+        }
+        footer ul li a:hover {
+            color: #fff;
+        }
+        footer .copyright {
+            border-top: 1px solid #244b60;
+            padding-top: 18px;
+            margin-top: 28px;
+            text-align: center;
+            font-size: 14px;
+            color: #8aa3b3;
         }
 
-        .back-link:hover {
-            text-decoration: underline;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .level-selection,
-            .stream-selection,
+        /* ----- responsive ----- */
+        @media (max-width: 700px) {
+            .level-grid,
+            .stream-grid,
             .form-row {
                 grid-template-columns: 1fr;
             }
-
-            .step-indicator {
-                flex-wrap: wrap;
-            }
-
             .step-line {
                 width: 20px;
             }
-
-            .form-container {
-                padding: 20px;
+            .form-wrap {
+                padding: 24px 16px;
             }
-
-            .level-card h3 {
-                font-size: 24px;
+            .page-title h1 {
+                font-size: 28px;
+            }
+            .top-bar .contact-info span {
+                display: inline-block;
+                margin-right: 14px;
+                font-size: 12px;
+            }
+            nav ul {
+                flex-direction: column;
+            }
+            nav ul li a {
+                padding: 10px 18px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- TOP BAR -->
+
+    <!-- ===== TOP BAR ===== -->
     <div class="top-bar">
         <div class="container">
             <div class="contact-info">
@@ -321,7 +461,7 @@
         </div>
     </div>
 
-    <!-- HEADER -->
+    <!-- ===== HEADER ===== -->
     <header>
         <div class="container">
             <div class="logo">
@@ -334,12 +474,12 @@
         </div>
     </header>
 
-    <!-- NAVIGATION -->
+    <!-- ===== NAV ===== -->
     <nav>
         <div class="container">
             <ul>
                 <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About Us</a></li>
+                <li><a href="about.html">About</a></li>
                 <li><a href="academics.html">Academics</a></li>
                 <li><a href="admission.html" class="active">Admissions</a></li>
                 <li><a href="gallery.html">Gallery</a></li>
@@ -348,163 +488,161 @@
         </div>
     </nav>
 
-    <!-- APPLICATION FORM -->
+    <!-- ===== MAIN APPLICATION ===== -->
     <div class="apply-container">
+
         <a href="admission.html" class="back-link">← Back to Admissions</a>
 
-        <div style="text-align: center; margin-bottom: 30px;">
+        <div class="page-title">
             <h1>Start Your Application</h1>
-            <p style="color: #666; font-size: 18px;">Select your level below to begin the application process</p>
+            <p>Select your level below to begin the application process</p>
         </div>
 
         <!-- STEP INDICATOR -->
         <div class="step-indicator">
-            <div class="step-circle active" id="step1Circle">1</div>
-            <div class="step-line" id="line1"></div>
-            <div class="step-circle" id="step2Circle">2</div>
-            <div class="step-line" id="line2"></div>
-            <div class="step-circle" id="step3Circle">3</div>
+            <div class="step-circle active" id="s1c">1</div>
+            <div class="step-line" id="l1"></div>
+            <div class="step-circle" id="s2c">2</div>
+            <div class="step-line" id="l2"></div>
+            <div class="step-circle" id="s3c">3</div>
         </div>
 
-        <!-- STEP 1: SELECT LEVEL -->
+        <!-- ===== STEP 1 : LEVEL ===== -->
         <div class="step-content active" id="step1">
-            <h2 style="text-align: center; color: #1a3a4f; margin-bottom: 30px;">Choose Your Level</h2>
-            <div class="level-selection">
-                <div class="level-card" data-level="olevel" onclick="selectLevel('olevel')">
+            <div class="level-grid">
+                <div class="level-card" data-level="olevel" onclick="pickLevel('olevel')">
                     <span class="icon">📚</span>
                     <h3>O-LEVEL</h3>
-                    <p>Senior 1 - Senior 4</p>
-                    <p style="font-size: 12px; color: #888; margin-top: 10px;">Click to apply</p>
+                    <p>Senior 1 – Senior 4</p>
+                    <p style="font-size:13px;color:#8899a8;margin-top:12px;">Click to apply</p>
                 </div>
-                <div class="level-card" data-level="alevel" onclick="selectLevel('alevel')">
+                <div class="level-card" data-level="alevel" onclick="pickLevel('alevel')">
                     <span class="icon">🎓</span>
                     <h3>A-LEVEL</h3>
-                    <p>Senior 5 - Senior 6</p>
-                    <p style="font-size: 12px; color: #888; margin-top: 10px;">Click to apply</p>
+                    <p>Senior 5 – Senior 6</p>
+                    <p style="font-size:13px;color:#8899a8;margin-top:12px;">Click to apply</p>
                 </div>
             </div>
         </div>
 
-        <!-- STEP 2: SELECT STREAM (Only for A-Level) -->
+        <!-- ===== STEP 2 : STREAM (only for A-Level) ===== -->
         <div class="step-content" id="step2">
-            <h2 style="text-align: center; color: #1a3a4f; margin-bottom: 10px;">Choose Your Stream</h2>
-            <p style="text-align: center; color: #666; margin-bottom: 30px;">Select the stream you want to pursue</p>
-            <div class="stream-selection">
-                <div class="stream-card" onclick="selectStream('arts')">
+            <h2 style="text-align:center;color:#1a3a4f;margin-bottom:6px;">Choose Your Stream</h2>
+            <p style="text-align:center;color:#666;margin-bottom:30px;">Select the stream you want to pursue</p>
+
+            <div class="stream-grid">
+                <div class="stream-card" onclick="pickStream('arts')">
                     <span class="icon">🎨</span>
                     <h3>Arts</h3>
                     <ul>
-                        <li>History</li>
-                        <li>Geography</li>
-                        <li>Economics</li>
-                        <li>Literature</li>
-                        <li>CRE</li>
+                        <li>History · Geography · Economics</li>
+                        <li>Literature · CRE</li>
                     </ul>
                 </div>
-                <div class="stream-card" onclick="selectStream('science')">
+                <div class="stream-card" onclick="pickStream('science')">
                     <span class="icon">🔬</span>
                     <h3>Science</h3>
                     <ul>
-                        <li>Physics</li>
-                        <li>Chemistry</li>
-                        <li>Biology</li>
-                        <li>Mathematics</li>
-                        <li>Computer Science</li>
+                        <li>Physics · Chemistry · Biology</li>
+                        <li>Mathematics · Computer Science</li>
                     </ul>
                 </div>
             </div>
-            <div style="text-align: center; margin-top: 20px;">
-                <button class="btn btn-secondary" onclick="goToStep(1)">← Back</button>
+
+            <div style="text-align:center;margin-top:28px;">
+                <button class="btn btn-secondary" onclick="goTo(1)">← Back</button>
             </div>
         </div>
 
-        <!-- STEP 3: APPLICATION FORM -->
+        <!-- ===== STEP 3 : FORM ===== -->
         <div class="step-content" id="step3">
-            <div class="form-container">
+            <div class="form-wrap">
                 <h2 id="formTitle">Application Form</h2>
-                <p class="subtitle" id="formSubtitle">Please fill in all required fields</p>
+                <p class="sub" id="formSub">Please fill in all required fields</p>
 
-                <form id="applicationForm" onsubmit="submitApplication(event)">
+                <form id="appForm" onsubmit="submitApp(event)">
                     <div class="form-row">
                         <div class="form-group">
                             <label>First Name *</label>
-                            <input type="text" id="firstName" required>
+                            <input type="text" id="fname" required />
                         </div>
                         <div class="form-group">
                             <label>Last Name *</label>
-                            <input type="text" id="lastName" required>
+                            <input type="text" id="lname" required />
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group">
                             <label>Date of Birth *</label>
-                            <input type="date" id="dob" required>
+                            <input type="date" id="dob" required />
                         </div>
                         <div class="form-group">
                             <label>Gender *</label>
                             <select id="gender" required>
                                 <option value="">Select</option>
-                                <option value="male">Male</option>
-                                <option value="female">Female</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
                             </select>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label>Email Address *</label>
-                        <input type="email" id="email" required>
+                        <input type="email" id="email" required />
                     </div>
 
                     <div class="form-group">
                         <label>Phone Number *</label>
-                        <input type="tel" id="phone" required>
+                        <input type="tel" id="phone" required />
                     </div>
 
                     <div class="form-group">
                         <label>Residential Address *</label>
-                        <input type="text" id="address" required>
+                        <input type="text" id="address" required />
                     </div>
 
                     <div class="form-group">
                         <label>Previous School *</label>
-                        <input type="text" id="previousSchool" required>
+                        <input type="text" id="prevSchool" required />
                     </div>
 
                     <div class="form-group">
-                        <label>Parent/Guardian Name *</label>
-                        <input type="text" id="guardian" required>
+                        <label>Parent / Guardian Name *</label>
+                        <input type="text" id="guardian" required />
                     </div>
 
                     <div class="form-group">
-                        <label>Parent/Guardian Contact *</label>
-                        <input type="tel" id="guardianContact" required>
+                        <label>Parent / Guardian Contact *</label>
+                        <input type="tel" id="guardianPhone" required />
                     </div>
 
                     <div class="form-group">
                         <label>Why do you want to join Kongunga High School?</label>
-                        <textarea id="reason" placeholder="Tell us why you want to study at Kongunga High School..."></textarea>
+                        <textarea id="reason" placeholder="Tell us why you want to study at Kongunga..."></textarea>
                     </div>
 
-                    <div style="text-align: center; margin-top: 20px;">
+                    <div style="text-align:center;margin-top:12px;">
                         <button type="submit" class="btn btn-success">Submit Application →</button>
                     </div>
                 </form>
             </div>
-            <div style="text-align: center; margin-top: 20px;">
-                <button class="btn btn-secondary" onclick="goToStep(2)">← Back</button>
+
+            <div style="text-align:center;margin-top:22px;">
+                <button class="btn btn-secondary" onclick="goTo(2)">← Back</button>
             </div>
         </div>
+
     </div>
 
-    <!-- FOOTER -->
+    <!-- ===== FOOTER ===== -->
     <footer>
         <div class="container">
             <div class="footer-grid">
                 <div>
                     <h3>Kongunga High School</h3>
-                    <p>Affiliated to UNEB<br>Est. 1995</p>
-                    <p class="footer-contact">📞 +256 786706774<br>✉️ info@kongungahighschool.edu<br>📍 Kachumbala, Bukedea, Uganda</p>
+                    <p>Affiliated to UNEB<br />Est. 1995</p>
+                    <p style="margin-top:10px;">📞 +256 786706774<br />✉️ info@kongungahighschool.edu<br />📍 Kachumbala, Bukedea</p>
                 </div>
                 <div>
                     <h4>Quick Links</h4>
@@ -519,17 +657,16 @@
                     <h4>Resources</h4>
                     <ul>
                         <li><a href="#">School Calendar</a></li>
-                        <li><a href="nutrition.html">Lunch Menu</a></li>
                         <li><a href="#">Library Catalog</a></li>
                     </ul>
                 </div>
                 <div>
                     <h4>Follow Us</h4>
-                    <div class="social">
-                        <a href="#">Facebook</a>
-                        <a href="#">Instagram</a>
-                        <a href="#">Twitter</a>
-                    </div>
+                    <ul>
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#">Instagram</a></li>
+                        <li><a href="#">Twitter</a></li>
+                    </ul>
                 </div>
             </div>
             <div class="copyright">
@@ -538,149 +675,141 @@
         </div>
     </footer>
 
+    <!-- ========================================================= -->
+    <!--  JAVASCRIPT  –  handles all navigation & form submission   -->
+    <!-- ========================================================= -->
     <script>
-        // Application State
-        let selectedLevel = '';
-        let selectedStream = '';
+        // ----- state -----
+        let chosenLevel = ''; // 'olevel' or 'alevel'
+        let chosenStream = ''; // 'arts' or 'science' (only for A-Level)
 
-        // Step Navigation
-        function goToStep(step) {
-            // Hide all steps
-            document.querySelectorAll('.step-content').forEach(el => {
-                el.classList.remove('active');
-            });
+        // ----- step navigation -----
+        function goTo(step) {
+            // hide all steps
+            document.querySelectorAll('.step-content').forEach(el => el.classList.remove('active'));
+            // show target
+            const target = document.getElementById('step' + step);
+            if (target) target.classList.add('active');
 
-            // Show selected step
-            const stepElement = document.getElementById('step' + step);
-            if (stepElement) {
-                stepElement.classList.add('active');
-            }
-
-            // Update step indicators
+            // update circles
             for (let i = 1; i <= 3; i++) {
-                const circle = document.getElementById('step' + i + 'Circle');
-                if (circle) {
-                    circle.classList.remove('active', 'completed');
-                    if (i < step) {
-                        circle.classList.add('completed');
-                    } else if (i === step) {
-                        circle.classList.add('active');
-                    }
-                }
+                const circle = document.getElementById('s' + i + 'c');
+                if (!circle) continue;
+                circle.classList.remove('active', 'completed');
+                if (i === step) circle.classList.add('active');
+                else if (i < step) circle.classList.add('completed');
             }
-
-            // Update lines
+            // update lines
             for (let i = 1; i <= 2; i++) {
-                const line = document.getElementById('line' + i);
+                const line = document.getElementById('l' + i);
                 if (line) {
                     line.classList.toggle('active', i < step);
                 }
             }
-
-            // Update form title based on selections
-            updateFormTitle();
         }
 
-        // Select Level
-        function selectLevel(level) {
-            selectedLevel = level;
+        // ----- pick level (O or A) -----
+        function pickLevel(level) {
+            chosenLevel = level;
+            chosenStream = ''; // reset stream
 
-            // Highlight selected card
-            document.querySelectorAll('.level-card').forEach(card => {
-                card.classList.remove('selected');
-            });
-            document.querySelector(`.level-card[data-level="${level}"]`).classList.add('selected');
+            // highlight card
+            document.querySelectorAll('.level-card').forEach(c => c.classList.remove('selected'));
+            const card = document.querySelector('.level-card[data-level="' + level + '"]');
+            if (card) card.classList.add('selected');
 
             if (level === 'olevel') {
-                // O-Level: Skip step 2, go directly to form
-                selectedStream = 'N/A';
-                goToStep(3);
+                // O‑Level → straight to form (skip stream step)
+                goTo(3);
+                updateFormTitle('O‑Level');
             } else if (level === 'alevel') {
-                // A-Level: Go to stream selection
-                goToStep(2);
+                // A‑Level → go to stream selection
+                goTo(2);
             }
         }
 
-        // Select Stream
-        function selectStream(stream) {
-            selectedStream = stream;
+        // ----- pick stream (Arts / Science) -----
+        function pickStream(stream) {
+            chosenStream = stream;
 
-            // Highlight selected card
-            document.querySelectorAll('.stream-card').forEach(card => {
-                card.classList.remove('selected');
-            });
-            event.target.closest('.stream-card').classList.add('selected');
+            // highlight card
+            document.querySelectorAll('.stream-card').forEach(c => c.classList.remove('selected'));
+            // find the clicked card (using event target)
+            const cards = document.querySelectorAll('.stream-card');
+            for (let c of cards) {
+                if (c.textContent.toLowerCase().includes(stream)) {
+                    c.classList.add('selected');
+                    break;
+                }
+            }
 
-            // Go to form
-            goToStep(3);
+            // go to form
+            goTo(3);
+            const label = stream.charAt(0).toUpperCase() + stream.slice(1);
+            updateFormTitle('A‑Level (' + label + ')');
         }
 
-        // Update Form Title
-        function updateFormTitle() {
+        // ----- update form title & subtitle -----
+        function updateFormTitle(levelLabel) {
             const title = document.getElementById('formTitle');
-            const subtitle = document.getElementById('formSubtitle');
+            const sub = document.getElementById('formSub');
+            if (!title || !sub) return;
 
-            if (selectedLevel === 'olevel') {
-                title.textContent = 'O-Level Application Form';
-                subtitle.textContent = 'Senior 1 - Senior 4 | Apply to join our O-Level program';
-            } else if (selectedLevel === 'alevel' && selectedStream) {
-                const streamDisplay = selectedStream.charAt(0).toUpperCase() + selectedStream.slice(1);
-                title.textContent = `A-Level ${streamDisplay} Application Form`;
-                subtitle.textContent = `Senior 5 - Senior 6 | ${streamDisplay} stream | Apply to join our A-Level program`;
+            if (chosenLevel === 'olevel') {
+                title.textContent = 'O‑Level Application Form';
+                sub.textContent = 'Senior 1 – Senior 4 · Apply to join our O‑Level program';
+            } else if (chosenLevel === 'alevel' && chosenStream) {
+                const s = chosenStream.charAt(0).toUpperCase() + chosenStream.slice(1);
+                title.textContent = 'A‑Level ' + s + ' Application Form';
+                sub.textContent = 'Senior 5 – Senior 6 · ' + s + ' stream · Apply to join our A‑Level program';
             } else {
                 title.textContent = 'Application Form';
-                subtitle.textContent = 'Please fill in all required fields';
+                sub.textContent = 'Please fill in all required fields';
             }
         }
 
-        // Submit Application
-        function submitApplication(event) {
-            event.preventDefault();
+        // ----- submit application -----
+        function submitApp(e) {
+            e.preventDefault();
 
-            // Get form values
-            const firstName = document.getElementById('firstName').value;
-            const lastName = document.getElementById('lastName').value;
-            const email = document.getElementById('email').value;
-            const phone = document.getElementById('phone').value;
+            const fname = document.getElementById('fname').value.trim();
+            const lname = document.getElementById('lname').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const phone = document.getElementById('phone').value.trim();
 
-            // Simple validation
-            if (!firstName || !lastName || !email || !phone) {
+            if (!fname || !lname || !email || !phone) {
                 alert('Please fill in all required fields marked with *');
                 return;
             }
 
-            // Show success message
-            const form = document.getElementById('applicationForm');
+            // show success screen inside the form
+            const form = document.getElementById('appForm');
             form.innerHTML = `
-                <div style="text-align: center; padding: 40px 20px;">
-                    <div style="font-size: 60px; margin-bottom: 20px;">✅</div>
-                    <h2 style="color: #27ae60;">Application Submitted Successfully!</h2>
-                    <p style="color: #555; font-size: 18px; margin: 20px 0;">
-                        Thank you, <strong>${firstName} ${lastName}</strong>!<br>
+                <div style="text-align:center;padding:30px 10px;">
+                    <div style="font-size:64px;margin-bottom:16px;">✅</div>
+                    <h2 style="color:#27ae60;">Application Submitted!</h2>
+                    <p style="font-size:18px;color:#333;margin:16px 0;">
+                        Thank you, <strong>${fname} ${lname}</strong>!<br>
                         Your application to Kongunga High School has been received.
                     </p>
-                    <div style="background: #e8f5e9; padding: 20px; border-radius: 8px; max-width: 400px; margin: 20px auto;">
-                        <p style="margin: 0; color: #2e7d32;">
-                            📧 A confirmation email has been sent to<br>
-                            <strong>${email}</strong>
-                        </p>
-                        <p style="margin: 10px 0 0 0; color: #2e7d32;">
-                            📞 We will contact you on <strong>${phone}</strong>
-                        </p>
+                    <div style="background:#e9f7ed;padding:18px;border-radius:12px;max-width:420px;margin:16px auto;text-align:left;">
+                        <p style="margin:4px 0;">📧 Confirmation sent to <strong>${email}</strong></p>
+                        <p style="margin:4px 0;">📞 We'll contact you on <strong>${phone}</strong></p>
                     </div>
-                    <p style="color: #888;">You will receive further instructions within 48 hours.</p>
-                    <div style="margin-top: 30px;">
-                        <a href="index.html" class="btn btn-primary">Return to Home</a>
-                        <a href="admission.html" class="btn btn-secondary" style="margin-left: 10px;">View Other Programs</a>
+                    <p style="color:#777;">You will receive further instructions within 48 hours.</p>
+                    <div style="margin-top:28px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
+                        <a href="index.html" class="btn btn-primary">Return Home</a>
+                        <a href="admission.html" class="btn btn-secondary">View Other Programs</a>
                     </div>
                 </div>
             `;
         }
 
-        // Initialize - ensure step 1 is active
+        // ----- ensure step 1 is active on page load -----
         document.addEventListener('DOMContentLoaded', function() {
-            goToStep(1);
+            goTo(1);
         });
     </script>
+
 </body>
 </html>
