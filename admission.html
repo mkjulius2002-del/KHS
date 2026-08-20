@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admissions - Kongunga High School</title>
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="../css/main.css">
 </head>
 <body>
     <div class="top-bar">
@@ -435,9 +435,11 @@
     </footer>
     <script src="../js/main.js"></script>
     <script>
-        // Auth check - is user logged in?
-        const isUserAuthenticated = ;
-        
+        // ============================================================
+        // FIXED: AUTH CHECK - defined properly
+        // ============================================================
+        var isUserAuthenticated = false; // Set to true if user is logged in
+
         function checkAuthAndSubmit(formElement, callback) {
             if (!isUserAuthenticated) {
                 alert('Please login or create an account to submit your application.');
@@ -447,7 +449,7 @@
             if (callback) callback();
             return true;
         }
-        
+
         // ============================================================
         // FILE UPLOAD - DISPLAY FILE NAME
         // ============================================================
@@ -485,6 +487,7 @@
                 });
             }
         }
+
         function removeFile(inputId, displayId) {
             var input = document.getElementById(inputId);
             var display = document.getElementById(displayId);
@@ -493,80 +496,77 @@
                 display.classList.remove('show');
             }
         }
+
         // Setup file uploads for all forms
         setupFileUpload('olevelResultSlip', 'olevelFileName', 'olevelFileNameText');
         setupFileUpload('artsResultSlip', 'artsFileName', 'artsFileNameText');
         setupFileUpload('scienceResultSlip', 'scienceFileName', 'scienceFileNameText');
+
         // ============================================================
-        // FORM TOGGLE LOGIC        // ============================================================
+        // FIXED: FORM TOGGLE LOGIC - WORKS CORRECTLY NOW
+        // ============================================================
         var olevelBtn = document.getElementById('olevelBtn');
         var alevelBtn = document.getElementById('alevelBtn');
-        var alevelOptions = document.getElementById('alevelOptions');
-        var artsBtn = document.getElementById('artsBtn');
-        var scienceBtn = document.getElementById('scienceBtn');
-        var backToLevelBtn = document.getElementById('backToLevelBtn');
-        
         var olevelForm = document.getElementById('olevelForm');
         var artsForm = document.getElementById('artsForm');
         var scienceForm = document.getElementById('scienceForm');
-        
         var backFromOlevel = document.getElementById('backFromOlevel');
         var backFromArts = document.getElementById('backFromArts');
         var backFromScience = document.getElementById('backFromScience');
+
         function hideAllForms() {
             if (olevelForm) olevelForm.style.display = 'none';
             if (artsForm) artsForm.style.display = 'none';
             if (scienceForm) scienceForm.style.display = 'none';
-            if (alevelOptions) alevelOptions.style.display = 'none';
         }
+
+        // O-LEVEL BUTTON
         if (olevelBtn) {
             olevelBtn.addEventListener('click', function() {
                 hideAllForms();
-                if (olevelForm) olevelForm.style.display = 'block';
-                window.scrollTo({ top: olevelForm.offsetTop - 100, behavior: 'smooth' });
+                if (olevelForm) {
+                    olevelForm.style.display = 'block';
+                    setTimeout(function() {
+                        olevelForm.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }, 100);
+                }
             });
         }
+
+        // A-LEVEL BUTTON - shows Arts and Science forms on the SAME page
         if (alevelBtn) {
             alevelBtn.addEventListener('click', function() {
                 hideAllForms();
-                if (alevelOptions) alevelOptions.style.display = 'block';
-                window.scrollTo({ top: alevelOptions.offsetTop - 50, behavior: 'smooth' });
-            });
-        }
-        if (backToLevelBtn) {
-            backToLevelBtn.addEventListener('click', function() {
-                if (alevelOptions) alevelOptions.style.display = 'none';
-            });
-        }
-        if (artsBtn) {
-            artsBtn.addEventListener('click', function() {
-                hideAllForms();
+                // Show both Arts and Science forms side by side or stacked
                 if (artsForm) artsForm.style.display = 'block';
-                window.scrollTo({ top: artsForm.offsetTop - 100, behavior: 'smooth' });
-            });
-        }
-        if (scienceBtn) {
-            scienceBtn.addEventListener('click', function() {
-                hideAllForms();
                 if (scienceForm) scienceForm.style.display = 'block';
-                window.scrollTo({ top: scienceForm.offsetTop - 100, behavior: 'smooth' });
+                setTimeout(function() {
+                    if (artsForm) artsForm.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 100);
             });
         }
+
+        // Back from O-Level
         if (backFromOlevel) {
             backFromOlevel.addEventListener('click', function() {
                 if (olevelForm) olevelForm.style.display = 'none';
             });
         }
+
+        // Back from Arts
         if (backFromArts) {
             backFromArts.addEventListener('click', function() {
                 if (artsForm) artsForm.style.display = 'none';
             });
         }
+
+        // Back from Science
         if (backFromScience) {
             backFromScience.addEventListener('click', function() {
                 if (scienceForm) scienceForm.style.display = 'none';
             });
         }
+
         // ============================================================
         // SUBJECT SELECTION LIMITS
         // ============================================================
@@ -574,6 +574,7 @@
         var artsSubsidiaries = document.querySelectorAll('#artsSubsidiaries input[type="checkbox"]');
         var artsPrincipalWarning = document.getElementById('artsPrincipalWarning');
         var artsSubsidiaryWarning = document.getElementById('artsSubsidiaryWarning');
+
         function updateArtsSelection() {
             var selectedPrincipals = document.querySelectorAll('#artsPrincipals input[type="checkbox"]:checked').length;
             var selectedSubsidiaries = document.querySelectorAll('#artsSubsidiaries input[type="checkbox"]:checked').length;
@@ -589,12 +590,15 @@
                 if (!cb.checked) cb.disabled = (selectedSubsidiaries >= 2);
             });
         }
+
         artsPrincipals.forEach(function(cb) { cb.addEventListener('change', updateArtsSelection); });
         artsSubsidiaries.forEach(function(cb) { cb.addEventListener('change', updateArtsSelection); });
+
         var sciencePrincipals = document.querySelectorAll('#sciencePrincipals input[type="checkbox"]');
         var scienceSubsidiaries = document.querySelectorAll('#scienceSubsidiaries input[type="checkbox"]');
         var sciencePrincipalWarning = document.getElementById('sciencePrincipalWarning');
         var scienceSubsidiaryWarning = document.getElementById('scienceSubsidiaryWarning');
+
         function updateScienceSelection() {
             var selectedPrincipals = document.querySelectorAll('#sciencePrincipals input[type="checkbox"]:checked').length;
             var selectedSubsidiaries = document.querySelectorAll('#scienceSubsidiaries input[type="checkbox"]:checked').length;
@@ -610,10 +614,12 @@
                 if (!cb.checked) cb.disabled = (selectedSubsidiaries >= 2);
             });
         }
+
         sciencePrincipals.forEach(function(cb) { cb.addEventListener('change', updateScienceSelection); });
         scienceSubsidiaries.forEach(function(cb) { cb.addEventListener('change', updateScienceSelection); });
+
         // ============================================================
-        // FORM SUBMISSIONS (Frontend validation only - backend handles actual submission)
+        // FORM SUBMISSIONS (Frontend validation only)
         // ============================================================
         document.getElementById('olevelAdmissionForm')?.addEventListener('submit', function(e) {
             var fileInput = document.getElementById('olevelResultSlip');
@@ -626,6 +632,7 @@
                 e.preventDefault();
             }
         });
+
         document.getElementById('artsAdmissionForm')?.addEventListener('submit', function(e) {
             var fileInput = document.getElementById('artsResultSlip');
             if (!fileInput.files || !fileInput.files[0]) {
@@ -652,6 +659,7 @@
                 e.preventDefault();
             }
         });
+
         document.getElementById('scienceAdmissionForm')?.addEventListener('submit', function(e) {
             var fileInput = document.getElementById('scienceResultSlip');
             if (!fileInput.files || !fileInput.files[0]) {
