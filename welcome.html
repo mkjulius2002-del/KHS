@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome - Kongunga High School</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <style>
+        /* Welcome Page Styles */
+        .welcome-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        .welcome-card {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            border: 1px solid #eef2f7;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        .welcome-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+            border-color: #2c5f8a;
+        }
+        .welcome-card .card-icon {
+            font-size: 48px;
+            display: block;
+            margin-bottom: 15px;
+        }
+        .welcome-card h3 {
+            font-size: 22px;
+            color: #1a3a4f;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        .welcome-card p {
+            color: #555;
+            font-size: 15px;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+        .welcome-card .learn-more {
+            display: inline-block;
+            color: #e67e22;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        .welcome-card .learn-more:hover {
+            color: #d35400;
+            transform: translateX(5px);
+        }
+        .welcome-card .learn-more::after {
+            content: " →";
+            transition: all 0.3s;
+        }
+        .welcome-card .learn-more:hover::after {
+            content: " →";
+            margin-left: 5px;
+        }
+        .welcome-card.card-visit .card-icon { color: #2c5f8a; }
+        .welcome-card.card-visit:hover { border-color: #2c5f8a; }
+        .welcome-card.card-inquire .card-icon { color: #e67e22; }
+        .welcome-card.card-inquire:hover { border-color: #e67e22; }
+        .welcome-card.card-faqs .card-icon { color: #27ae60; }
+        .welcome-card.card-faqs:hover { border-color: #27ae60; }
+        .inquire-form-section {
+            background: #f8f9fa;
+            border-radius: 16px;
+            padding: 40px;
+            margin: 40px 0;
+            border: 1px solid #eef2f7;
+            display: none;
+        }
+        .inquire-form-section.active {
+            display: block;
+            animation: fadeInUp 0.5s ease;
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .inquire-form-section h2 {
+            color: #1a3a4f;
+            font-size: 28px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        .inquire-form-section p {
+            color: #666;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            color: #1a3a4f;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 15px;
+            transition: all 0.3s;
+            background: white;
+        }
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: #e67e22;
+            outline: none;
+            box-shadow: 0 0 5px rgba(230,126,34,0.3);
+        }
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        .btn-submit {
+            background: #e67e22;
+            color: white;
+            border: none;
+            padding: 14px 40px;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 100%;
+        }
+        .btn-submit:hover {
+            background: #d35400;
+            transform: translateY(-2px);
+        }
+        .form-message {
+            margin-top: 15px;
+            padding: 12px;
+            border-radius: 8px;
+            font-weight: 500;
+            text-align: center;
+        }
+        .form-message.success {
+            background: #d4edda;
+            color: #155724;
+        }
+        .form-message.error {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        /* FAQ Section with Dropdown */
+        .faq-section {
+            margin: 40px 0;
+        }
+        .faq-section h2 {
+            text-align: center;
+            color: #1a3a4f;
+            font-size: 32px;
+            margin-bottom: 30px;
+        }
+        .faq-item {
+            background: #f8f9fa;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #eef2f7;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+        .faq-item:hover {
+            border-color: #e67e22;
+        }
+        .faq-question {
+            padding: 18px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            background: white;
+        }
+        .faq-question:hover {
+            background: #fff8f0;
+        }
+        .faq-question h4 {
+            color: #1a3a4f;
+            font-size: 17px;
+            margin: 0;
+            font-weight: 600;
+        }
+        .faq-question .faq-arrow {
+            font-size: 20px;
+            color: #e67e22;
+            transition: transform 0.3s ease;
+            font-weight: bold;
+        }
+        .faq-item.active .faq-arrow {
+            transform: rotate(180deg);
+        }
+        .faq-answer {
+            padding: 0 25px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            background: #f8f9fa;
+        }
+        .faq-item.active .faq-answer {
+            padding: 20px 25px;
+            max-height: 300px;
+        }
+        .faq-answer p {
+            color: #555;
+            font-size: 15px;
+            line-height: 1.8;
+            margin: 0;
+        }
+        .faq-answer p strong {
+            color: #1a3a4f;
+        }
+        @media (max-width: 992px) {
+            .welcome-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+        @media (max-width: 768px) {
+            .welcome-grid {
+                grid-template-columns: 1fr;
+            }
+            .inquire-form-section {
+                padding: 25px;
+            }
+            .faq-question {
+                padding: 15px 20px;
+            }
+            .faq-question h4 {
+                font-size: 15px;
+            }
+            .faq-item.active .faq-answer {
+                padding: 15px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <div class="container">
+            <div class="contact-info">
+                <span>📞 +256 786706774</span>
+                <span>✉️ info@kongungahighschool.edu</span>
+                <span>📍 Kachumbala, Bukedea, Uganda</span>
+            </div>
+            <div class="auth-links">
+                
+            </div>
+        </div>
+    </div>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <div class="css-logo">KHS</div>
+                <h1>Kongunga High <span>School</span></h1>
+            </div>
+            <div class="header-buttons">
+                <a href="admission.html" class="btn-primary">Admissions Open 2026-27</a>
+            </div>
+        </div>
+    </header>
+    <nav>
+        <div class="container">
+            <button class="mobile-menu-btn" id="mobileMenuBtn">☰ Menu</button>
+            <ul id="navMenu">
+                <li><a href="index.html">Home</a></li>
+                <li class="dropdown"><a href="about.html">About Us </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="head-of-school.html">Head of School</a></li>
+                        <li><a href="admission-list.html">Admitted students</a></li>
+                        <li><a href="employment.html">Employment</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown"><a href="academics.html">Academics </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="future-prospects.html">Future Prospects</a></li>
+                        <li><a href="admission-list.html">Admitted students</a></li>
+                        <li><a href="school-counseling.html">School Counseling</a></li>
+                        <li><a href="school-syllabus.html">School Syllabus</a></li>
+                        <li><a href="school-library.html">School Library</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown"><a href="#">Student Life </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="clubs.html">Clubs and Activities</a></li>
+                        <li><a href="student-news.html">Student News and Events</a></li>
+                        <li><a href="spiritual-life.html">Spiritual Life</a></li>
+                        <li><a href="admission-list.html">Admitted students</a></li>
+                        <li><a href="health.html">Health Services</a></li>
+                        <li><a href="community-service.html">Community Service</a></li>
+                        <li><a href="nutrition.html">Nutrition and Dining</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown"><a href="admission.html">Admissions </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="welcome.html" class="active">Welcome to Kongunga</a></li>
+                        <li><a href="admission-list.html">Admitted students</a></li>
+                        <li><a href="apply.html">Apply to Kongunga</a></li>
+                        <li><a href="fees.html">Fees Structure</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown"><a href="staff.html">Staff </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="board-of-governors.html">Board of Governors</a></li>
+                        <li><a href="pta-board.html">PTA Board</a></li>
+                        <li><a href="teaching-staff.html">Teaching Staff</a></li>
+                        <li><a href="admission-list.html">Admitted students</a></li>
+                        <li><a href="non-teaching-staff.html">Non-Teaching Staff</a></li>
+                        <li><a href="headteacher-previous.html">Previous Headteachers</a></li>
+                    </ul>
+                </li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="results.html">Results</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                
+            </ul>
+        </div>
+    </nav>
+    <!-- PAGE HEADER WITH BANNER IMAGE -->
+    <section class="page-header tall" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.7)), url(&quot;&quot;); background-size: cover; background-position: center;">
+        <div class="container">
+            <h1>Welcome to Kongunga High School</h1>
+            <p>Your journey to excellence begins here</p>
+        </div>
+    </section>
+    <section class="page-content">
+        <div class="container">
+            <!-- Three Cards: Visit Us, Inquire, FAQs -->
+            <div class="welcome-grid">
+                <!-- Visit Us Card -->
+                <div class="welcome-card card-visit">
+                    <span class="card-icon">📍</span>
+                    <h3>Visit Us</h3>
+                    <p>We welcome prospective families to visit our campus and see what makes Kongunga High School special. Our guided tours provide an opportunity to meet teachers, see facilities, and experience the school environment.</p>
+                    <a href="visit_us.html" class="learn-more">Learn More</a>
+                </div>
+                <!-- Inquire Card - Shows form on same page -->
+                <div class="welcome-card card-inquire">
+                    <span class="card-icon">❓</span>
+                    <h3>Inquire More</h3>
+                    <p>Have questions about admissions, academics, or school life? Our Admissions Team is here to help. Reach out to us and we'll get back to you within 24 hours.</p>
+                    <a href="#" class="learn-more" id="inquireBtn">Learn More</a>
+                </div>
+                <!-- FAQs Card - Shows FAQs on same page -->
+                <div class="welcome-card card-faqs">
+                    <span class="card-icon">📋</span>
+                    <h3>Admissions FAQs</h3>
+                    <p>Find answers to the most commonly asked questions about admissions, fees, scholarships, and the application process at Kongunga High School.</p>
+                    <a href="#" class="learn-more" id="faqsBtn">Learn More</a>
+                </div>
+            </div>
+            <!-- Inquire Form Section (Hidden by default) -->
+            <div id="inquireFormSection" class="inquire-form-section">
+                <h2>📝 Request Information</h2>
+                <p>Fill out the form below and our Admissions Team will contact you within 24 hours</p>
+                <form id="inquiryForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Full Name *</label>
+                            <input type="text" id="inqName" placeholder="Enter your full name" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Email Address *</label>
+                            <input type="email" id="inqEmail" placeholder="Enter your email" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Phone Number *</label>
+                            <input type="tel" id="inqPhone" placeholder="Enter your phone number" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Student's Grade/Class *</label>
+                            <select id="inqGrade" required>
+                                <option value="">Select Grade</option>
+                                <option>S.1</option>
+                                <option>S.2</option>
+                                <option>S.3</option>
+                                <option>S.4</option>
+                                <option>S.5</option>
+                                <option>S.6</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>How did you hear about us? *</label>
+                        <select id="inqHear" required>
+                            <option value="">Select</option>
+                            <option>Friend/Family</option>
+                            <option>Social Media</option>
+                            <option>School Website</option>
+                            <option>Newspaper</option>
+                            <option>Radio</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Your Message/Question *</label>
+                        <textarea id="inqMessage" placeholder="Please share any questions you have about admissions, academics, fees, etc." required></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit">Submit Inquiry</button>
+                </form>
+                <div id="inqMessageDiv" class="form-message"></div>
+            </div>
+            <!-- Frequently Asked Questions Section with Dropdown -->
+            <div id="faqsSection" class="faq-section">
+                <h2>❓ Frequently Asked Questions</h2>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <h4>When does the admissions process begin?</h4>
+                        <span class="faq-arrow">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Admissions for the 2026-27 academic year opened on January 15, 2026. Applications are accepted on a rolling basis until all seats are filled.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <h4>Do you offer scholarships?</h4>
+                        <span class="faq-arrow">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, we offer merit-based and need-based scholarships. Please inquire with the Admissions Office for more details.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <h4>Is boarding available?</h4>
+                        <span class="faq-arrow">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, we offer both day and boarding options. Boarding facilities are available for students in S1-S6.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <h4>What are the school fees?</h4>
+                        <span class="faq-arrow">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Fee structures vary by level (O-Level vs A-Level) and boarding status. Please visit our <a href="fees.html" style="color: #e67e22;">Fees Structure page</a> for detailed information.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <h4>How can I schedule a campus tour?</h4>
+                        <span class="faq-arrow">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>You can schedule a campus tour by contacting our Admissions Office via phone <strong>+256 786706774</strong> or email <strong>admissions@kongungahighschool.edu</strong></p>
+                    </div>
+                </div>
+            </div>
+            <!-- Back Link -->
+            <div style="text-align: center; margin-top: 30px; padding-top: 30px; border-top: 1px solid #eef2f7;">
+                <a href="admission.html" class="back-link">← Back to Admissions</a>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div><h3>Kongunga High School</h3><p>Affiliated to UNEB<br>Est. 1995</p></div>
+                <div><h4>Quick Links</h4><ul><li><a href="about.html">About Us</a></li><li><a href="academics.html">Academics</a></li><li><a href="admission.html">Admission</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+                <div><h4>Resources</h4><ul><li><a href="#">School Calendar</a></li><li><a href="nutrition.html">Lunch Menu</a></li><li><a href="#">Library Catalog</a></li></ul></div>
+                <div><h4>Follow Us</h4><div class="social"><a href="#">Facebook</a> <a href="#">Instagram</a> <a href="#">Twitter</a></div></div>
+            </div>
+            <div class="copyright"><p>&copy; 2026 Kongunga High School. All rights reserved.</p></div>
+        </div>
+    </footer>
+    <script>
+        // Toggle Inquire Form
+        document.getElementById('inquireBtn').addEventListener('click', function(e) {
+            e.preventDefault();
+            var formSection = document.getElementById('inquireFormSection');
+            formSection.classList.toggle('active');
+            if (formSection.classList.contains('active')) {
+                formSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+        // Toggle FAQs Section
+        document.getElementById('faqsBtn').addEventListener('click', function(e) {
+            e.preventDefault();
+            var faqsSection = document.getElementById('faqsSection');
+            faqsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            // Open first FAQ item by default
+            var firstFaq = document.querySelector('.faq-item');
+            if (firstFaq && !firstFaq.classList.contains('active')) {
+                firstFaq.classList.add('active');
+            }
+        });
+        // FAQ Toggle Function
+        function toggleFaq(element) {
+            var parent = element.parentElement;
+            parent.classList.toggle('active');
+        }
+        // Inquiry Form Submission
+        var inquiryForm = document.getElementById('inquiryForm');
+        if (inquiryForm) {
+            inquiryForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                var name = document.getElementById('inqName').value.trim();
+                var email = document.getElementById('inqEmail').value.trim();
+                var phone = document.getElementById('inqPhone').value.trim();
+                var grade = document.getElementById('inqGrade').value;
+                var message = document.getElementById('inqMessage').value.trim();
+                
+                if (!name || !email || !phone || !grade || !message) {
+                    showInquiryMessage('Please fill all required fields.', 'error');
+                    return;
+                }
+                
+                if (!email.includes('@')) {
+                    showInquiryMessage('Please enter a valid email address.', 'error');
+                    return;
+                }
+                
+                showInquiryMessage('Thank you ' + name + '! Your inquiry has been submitted. Our admissions team will respond within 24 hours.', 'success');
+                inquiryForm.reset();
+            });
+        }
+        function showInquiryMessage(message, type) {
+            var msgDiv = document.getElementById('inqMessageDiv');
+            if (msgDiv) {
+                msgDiv.innerHTML = message;
+                msgDiv.className = 'form-message ' + type;
+                setTimeout(function() {
+                    msgDiv.innerHTML = '';
+                    msgDiv.className = 'form-message';
+                }, 5000);
+            }
+        }
+    </script>
+    <script src="../js/main.js"></script>
+</body>
+</html>

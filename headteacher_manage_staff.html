@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Staff - Headteacher - Kongunga High School</title>
+    <link rel="stylesheet" href="../css/main.css">
+</head>
+<body>
+    <div class="top-bar">
+        <div class="container">
+            <div class="contact-info">
+                <span>📞 +256 786706774</span>
+                <span>✉️ info@kongungahighschool.edu</span>
+                <span>📍 Kachumbala, Bukedea, Uganda</span>
+            </div>
+            <div class="auth-links">
+                <span>Welcome, </span>
+                <a href="logout.html">Logout</a>
+            </div>
+        </div>
+    </div>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <div class="css-logo">KHS</div>
+                <h1>Kongunga High <span>School</span></h1>
+            </div>
+            <div class="header-buttons">
+                <a href="admission.html" class="btn-primary">Admissions Open 2026-27</a>
+            </div>
+        </div>
+    </header>
+    <nav>
+        <div class="container">
+            <button class="mobile-menu-btn" id="mobileMenuBtn">☰ Menu</button>
+            <ul id="navMenu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="headteacher_dashboard.html">Headteacher Dashboard</a></li>
+                <li><a href="headteacher_manage_staff.html" class="active">Manage Staff</a></li>
+                
+                <li class="dropdown">
+                    <a href="#">Dashboards ▾</a>
+                    <ul class="dropdown-menu">
+                        
+                        <li><a href="student_dashboard.html">Student Dashboard</a></li>
+                        <li><a href="teacher_dashboard.html">Teacher Dashboard</a></li>
+                        <li><a href="bursar_dashboard.html">Bursar Dashboard</a></li>
+                        <li><a href="dos_dashboard.html">DOS Dashboard</a></li>
+                        <li><a href="deputy_dashboard.html">Deputy Dashboard</a></li>
+                        <li><a href="headteacher_dashboard.html">Headteacher Dashboard</a></li>
+                        <li><a href="admin_dashboard.html">Admin Dashboard</a></li>
+                        
+                    </ul>
+                </li>
+                
+                <li><a href="logout.html">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+    <section class="page-content">
+        <div class="container">
+            <div class="dashboard-container">
+                <div class="dashboard-header">
+                    <div>
+                        <h1>👥 Manage Staff</h1>
+                        <p>Enroll, de-enroll, and edit staff members</p>
+                        <p class="dashboard-subtitle">You can manage: Class Teachers, Bursar, DOS, and Deputy Headteacher</p>
+                    </div>
+                </div>
+                <!-- Add New Staff -->
+                <div class="dashboard-card">
+                    <h3>➕ Add New Staff Member</h3>
+                    <form method="post" action="headteacher_manage_staff.html">
+                        
+                        <input type="hidden" name="action" value="add_new">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Full Name *</label>
+                                <input type="text" name="full_name" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Email Address *</label>
+                                <input type="email" name="email" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Password *</label>
+                                <input type="password" name="password" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Role *</label>
+                                <select name="role" required>
+                                    <option value="">Select Role</option>
+                                    <option value="teacher">Class Teacher</option>
+                                    <option value="bursar">Bursar</option>
+                                    <option value="dos">Director of Studies</option>
+                                    <option value="deputy">Deputy Headteacher</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Class (for Teachers)</label>
+                                <select name="class_name">
+                                    <option value="S.1">S.1</option>
+                                    <option value="S.2">S.2</option>
+                                    <option value="S.3">S.3</option>
+                                    <option value="S.4">S.4</option>
+                                    <option value="S.5">S.5</option>
+                                    <option value="S.6">S.6</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Subject (for Teachers)</label>
+                                <input type="text" name="subject" placeholder="e.g., Mathematics">
+                            </div>
+                        </div>
+                        <button type="submit" class="btn-submit">Add Staff Member</button>
+                    </form>
+                </div>
+                <!-- Staff List -->
+                <div class="dashboard-card">
+                    <h3>📋 Current Staff Members</h3>
+                    <table class="dashboard-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Role</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>
+                                    
+                                    <form method="post" action="headteacher_manage_staff.html" style="display:inline;">
+                                        
+                                        <input type="hidden" name="action" value="edit">
+                                        <input type="hidden" name="user_id" value="">
+                                        <select name="role" style="padding:5px;">
+                                            <option value="teacher" selected>Teacher</option>
+                                            <option value="bursar" selected>Bursar</option>
+                                            <option value="dos" selected>DOS</option>
+                                            <option value="deputy" selected>Deputy</option>
+                                        </select>
+                                        <button type="submit" class="btn-small">Update</button>
+                                    </form>
+                                    <form method="post" action="headteacher_manage_staff.html" style="display:inline;">
+                                        
+                                        <input type="hidden" name="action" value="de_enroll">
+                                        <input type="hidden" name="user_id" value="">
+                                        <button type="submit" class="btn-small" style="background:#e74c3c;">De-Enroll</button>
+                                    </form>
+                                    
+                                    <span style="color:#888;">Not manageable</span>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr><td colspan="4">No staff members found.</td></tr>
+                            
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h3>Kongunga High School</h3>
+                    <p>Affiliated to UNEB<br>Est. 1995</p>
+                </div>
+                <div>
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="academics.html">Academics</a></li>
+                        <li><a href="admission.html">Admission</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#">School Calendar</a></li>
+                        <li><a href="nutrition.html">Lunch Menu</a></li>
+                        <li><a href="#">Library Catalog</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Follow Us</h4>
+                    <div class="social">
+                        <a href="#">Facebook</a>
+                        <a href="#">Instagram</a>
+                        <a href="#">Twitter</a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2026 Kongunga High School. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <script src="../js/main.js"></script>
+</body>
+</html>

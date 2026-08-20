@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kongunga High School - Home</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <style>
+        /* Slideshow styles */
+        .hero-slideshow {
+            position: relative;
+            height: 500px;
+            overflow: hidden;
+            background: #1a3a4f;
+        }
+        .slideshow-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            overflow: hidden;
+        }
+        .slide.active {
+            opacity: 1;
+        }
+        .slide video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+        }
+        .slide .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+        .slide-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+            width: 80%;
+            max-width: 800px;
+            z-index: 2;
+        }
+        .slide-content h2 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+        }
+        .slide-content p {
+            font-size: 24px;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+        }
+        .btn-large {
+            display: inline-block;
+            padding: 15px 40px;
+            background: #e67e22;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 18px;
+            transition: all 0.3s;
+        }
+        .btn-large:hover {
+            background: #d35400;
+            transform: translateY(-2px);
+        }
+        .slideshow-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0,0,0,0.5);
+            color: white;
+            border: none;
+            font-size: 30px;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 50%;
+            transition: all 0.3s;
+            z-index: 10;
+        }
+        .slideshow-arrow:hover {
+            background: rgba(0,0,0,0.8);
+        }
+        .prev-arrow { left: 20px; }
+        .next-arrow { right: 20px; }
+        .slideshow-dots {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 12px;
+            z-index: 10;
+        }
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.5);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .dot.active {
+            background: #e67e22;
+            width: 30px;
+            border-radius: 10px;
+        }
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-slideshow { height: 400px; }
+            .slide-content h2 { font-size: 30px; }
+            .slide-content p { font-size: 18px; }
+            .slideshow-arrow { font-size: 20px; padding: 8px 12px; }
+        }
+        @media (max-width: 480px) {
+            .hero-slideshow { height: 300px; }
+            .slide-content h2 { font-size: 22px; }
+            .slide-content p { font-size: 14px; }
+            .btn-large { padding: 10px 25px; font-size: 14px; }
+            .slideshow-arrow { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <div class="container">
+            <div class="contact-info">
+                <span>📞 +256 786706774</span>
+                <span>✉️ info@kongungahighschool.edu</span>
+                <span>📍 Kachumbala, Bukedea, Uganda</span>
+            </div>
+            <div class="auth-links">
+                
+            </div>
+        </div>
+    </div>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <div class="css-logo">KHS</div>
+                <div class="logo-text">
+                    <h1>Kongunga High <span>School</span></h1>
+                    <p>In Pursuit For Excellence</p>
+                </div>
+            </div>
+            <div class="header-buttons">
+                <a href="admission.html" class="btn-primary">Admissions Open 2026-27</a>
+            </div>
+        </div>
+    </header>
+    <nav>
+        <div class="container">
+            <button class="mobile-menu-btn" id="mobileMenuBtn">☰ Menu</button>
+            <ul id="navMenu">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li class="dropdown"><a href="about.html">About Us </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="head-of-school.html">Head of School</a></li>
+                        <li><a href="admission-list.html">Admitted students</a></li>
+                        <li><a href="employment.html">Employment</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown"><a href="academics.html">Academics </a>
+                    <ul class="dropdown-menu">
+                         <li><a href="admission-list.html">Admitted students</a></li>
+                        <li><a href="future-prospects.html">Future Prospects</a></li>
+                        <li><a href="school-counseling.html">School Counseling</a></li>
+                        <li><a href="school-syllabus.html">School Syllabus</a></li>
+                        <li><a href="school-library.html">School Library</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown"><a href="#">Student Life </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="clubs.html">Clubs and Activities</a></li>
+                        <li><a href="student-news.html">Student News and Events</a></li>
+                        <li><a href="admission-list.html">Admitted students</a></li>
+                        <li><a href="spiritual-life.html">Spiritual Life</a></li>
+                        <li><a href="health.html">Health Services</a></li>
+                        <li><a href="community-service.html">Community Service</a></li>
+                        <li><a href="nutrition.html">Nutrition and Dining</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown"><a href="admission.html">Admissions </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="welcome.html">Welcome to Kongunga</a></li>
+                        <li><a href="admission-list.html">Admitted students</a></li>
+                        <li><a href="apply.html">Apply to Kongunga</a></li>
+                        <li><a href="fees.html">Fees Structure</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown"><a href="staff.html">Staff </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="board-of-governors.html">Board of Governors</a></li>
+                        <li><a href="pta-board.html">PTA Board</a></li>
+                        <li><a href="admission-list.html">Admitted students</a></li>
+                        <li><a href="teaching-staff.html">Teaching Staff</a></li>
+                        <li><a href="non-teaching-staff.html">Non-Teaching Staff</a></li>
+                        <li><a href="headteacher-previous.html">Previous Headteachers</a></li>
+                    </ul>
+                </li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="results.html">Results</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                
+            </ul>
+        </div>
+    </nav>
+    <!-- VIDEO SLIDESHOW SECTION - LOCAL VIDEOS -->
+    <section class="hero-slideshow">
+        <div class="slideshow-container">
+            <!-- Slide 1 - Video 1 -->
+            <div class="slide active" data-index="0">
+                <video muted loop playsinline>
+                    <source src="../videos/1.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="overlay"></div>
+                <div class="slide-content">
+                    <h2>Welcome to Kongunga High School</h2>
+                    <p>Excellence in Education, Character in Formation</p>
+                    <a href="apply.html" class="btn-large">Apply Now →</a>
+                </div>
+            </div>
+            <!-- Slide 2 - Video 2 -->
+            <div class="slide" data-index="1">
+                <video muted loop playsinline>
+                    <source src="../videos/2.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="overlay"></div>
+                <div class="slide-content">
+                    <h2>Quality Education for All</h2>
+                    <p>Affiliated with UNEB | Est. 1995</p>
+                    <a href="academics.html" class="btn-large">Explore Academics →</a>
+                </div>
+            </div>
+            <!-- Slide 3 - Video 3 -->
+            <div class="slide" data-index="2">
+                <video muted loop playsinline>
+                    <source src="../videos/3.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="overlay"></div>
+                <div class="slide-content">
+                    <h2>State-of-the-Art Facilities</h2>
+                    <p>Modern Labs | Sports Complex | Digital Library</p>
+                    <a href="gallery.html" class="btn-large">View Gallery →</a>
+                </div>
+            </div>
+            <!-- Slide 4 - Video 4 -->
+            <div class="slide" data-index="3">
+                <video muted loop playsinline>
+                    <source src="../videos/4.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="overlay"></div>
+                <div class="slide-content">
+                    <h2>Our Quality Experienced Teaching Staff</h2>
+                    <p>Dedicated to nurturing young minds</p>
+                    <a href="staff.html" class="btn-large">Meet Our Staff →</a>
+                </div>
+            </div>
+            <!-- Slide 5 - Video 5 -->
+            <div class="slide" data-index="4">
+                <video muted loop playsinline>
+                    <source src="../videos/5.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="overlay"></div>
+                <div class="slide-content">
+                    <h2>Find Us Here</h2>
+                    <p>Kachumbala County | Bukedea District | Mbale City</p>
+                    <a href="location.html" class="btn-large">View Location →</a>
+                </div>
+            </div>
+            <!-- Slide 6 - Video 6 -->
+            <div class="slide" data-index="5">
+                <video muted loop playsinline>
+                    <source src="../videos/6.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="overlay"></div>
+                <div class="slide-content">
+                    <h2>Join Our Family Today</h2>
+                    <p>Limited Seats Available for 2026-27</p>
+                    <a href="admission.html" class="btn-large">Apply Now →</a>
+                </div>
+            </div>
+            <!-- Slide 7 - Video 7 -->
+            <div class="slide" data-index="6">
+                <video muted loop playsinline>
+                    <source src="../videos/7.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="overlay"></div>
+                <div class="slide-content">
+                    <h2>Our Alumni Success Stories</h2>
+                    <p>Inspiring the next generation of leaders</p>
+                    <a href="results.html" class="btn-large">View Results →</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Navigation Arrows -->
+        <button class="slideshow-arrow prev-arrow" id="prevSlide">❮</button>
+        <button class="slideshow-arrow next-arrow" id="nextSlide">❯</button>
+        
+        <!-- Navigation Dots -->
+        <div class="slideshow-dots">
+            <div class="dot active" data-slide="0"></div>
+            <div class="dot" data-slide="1"></div>
+            <div class="dot" data-slide="2"></div>
+            <div class="dot" data-slide="3"></div>
+            <div class="dot" data-slide="4"></div>
+            <div class="dot" data-slide="5"></div>
+            <div class="dot" data-slide="6"></div>
+        </div>
+    </section>
+    <!-- WELCOME SECTION -->
+    <section class="welcome-section">
+        <div class="container">
+            <div class="welcome-content">
+                <div class="welcome-text">
+                    <h2>Welcome to <span class="highlight">Kongunga High School</span></h2>
+                    <p class="subtitle">A Center of Academic Excellence Since 1995</p>
+                    <p>Kongunga High School is a leading educational institution in Kachumbala, Bukedea District, committed to providing quality education that transforms lives. We are a community of learners, educators, and parents working together to nurture the next generation of leaders.</p>
+                    <div class="welcome-stats">
+                        <div class="stat-item">
+                            <span class="stat-number">30+</span>
+                            <span class="stat-label">Years of Excellence</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">2000+</span>
+                            <span class="stat-label">Students</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">100+</span>
+                            <span class="stat-label">Staff Members</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">100%</span>
+                            <span class="stat-label">UNEB Pass Rate</span>
+                        </div>
+                    </div>
+                    <a href="about.html" class="btn-outline">Learn More About Us →</a>
+                </div>
+                <div class="welcome-image">
+                    <div class="css-avatar" title="Kongunga High School Campus">KC</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- WHY CHOOSE US SECTION -->
+    <section class="features">
+        <div class="container">
+            <div class="section-header">
+                <h2>Why Choose Kongunga High School?</h2>
+                <p>Discover what makes us the preferred choice for quality education</p>
+            </div>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="icon">🎓</div>
+                    <h3>Expert Staff</h3>
+                    <p>Highly qualified teachers with 10+ years experience</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">🏫</div>
+                    <h3>Modern School</h3>
+                    <p>Smart classrooms, labs, and sports facilities</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">📚</div>
+                    <h3>Rich Library</h3>
+                    <p>10,000+ books and digital resources</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">🏆</div>
+                    <h3>100% Results</h3>
+                    <p>Consistent board exam toppers since 2015</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- PROGRAMS SECTION -->
+    <section class="programs-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Academic Programs</h2>
+                <p>Comprehensive education for every stage of learning</p>
+            </div>
+            <div class="programs-grid">
+                <div class="program-card">
+                    <div class="program-icon">📚</div>
+                    <h3>O-Level</h3>
+                    <p>Senior 1 - Senior 4</p>
+                    <ul>
+                        <li>Mathematics</li>
+                        <li>English Language</li>
+                        <li>Sciences (Physics, Chemistry, Biology)</li>
+                        <li>Humanities (History, Geography, CRE)</li>
+                        <li>Computer Science</li>
+                    </ul>
+                    <a href="academics.html" class="btn-small">Learn More →</a>
+                </div>
+                <div class="program-card">
+                    <div class="program-icon">🎓</div>
+                    <h3>A-Level</h3>
+                    <p>Senior 5 - Senior 6</p>
+                    <ul>
+                        <li>Science Combinations (PCM, PCB, MEG)</li>
+                        <li>Arts Combinations (HEG, HEC, LIT)</li>
+                        <li>Business Combinations</li>
+                        <li>ICT and Computer Science</li>
+                    </ul>
+                    <a href="academics.html" class="btn-small">Learn More →</a>
+                </div>
+                <div class="program-card">
+                    <div class="program-icon">💻</div>
+                    <h3>ICT & Digital Skills</h3>
+                    <p>Coding, Robotics, and Digital Literacy</p>
+                    <ul>
+                        <li>Computer Programming</li>
+                        <li>Web Design & Development</li>
+                        <li>Digital Marketing</li>
+                        <li>Graphic Design</li>
+                    </ul>
+                    <a href="academic-curriculum.html" class="btn-small">Learn More →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- NOTICE BOARD SECTION -->
+    <section class="notice-board">
+        <div class="container">
+            <div class="section-header">
+                <h2>📢 Notice Board</h2>
+                <p>Stay updated with the latest announcements</p>
+            </div>
+            <div class="notice-list">
+                <div class="notice">
+                    <span class="date">June 15, 2026</span>
+                    <p>Parent-Teacher Meeting on 25th June 2026</p>
+                </div>
+                <div class="notice">
+                    <span class="date">June 10, 2026</span>
+                    <p>Term 2 Exams begin on 1st July</p>
+                </div>
+                <div class="notice">
+                    <span class="date">June 5, 2026</span>
+                    <p>Annual Sports Day on 30th June</p>
+                </div>
+                <div class="notice">
+                    <span class="date">May 28, 2026</span>
+                    <p>New session starts from 1st August 2026</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- CTA SECTION -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Join Kongunga High School?</h2>
+                <p>Take the first step toward an exceptional education. Admissions are now open for the 2026-27 academic year.</p>
+                <div class="cta-buttons">
+                    <a href="apply.html" class="btn-large">Apply Now →</a>
+                    <a href="inquire.html" class="btn-outline-light">Request Information →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h3>Kongunga High School</h3>
+                    <p>Affiliated to UNEB<br>Est. 1995</p>
+                    <p class="footer-contact">📞 +256 786706774<br>✉️ info@kongungahighschool.edu<br>📍 Kachumbala, Bukedea, Uganda</p>
+                </div>
+                <div>
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="academics.html">Academics</a></li>
+                        <li><a href="admission.html">Admission</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#">School Calendar</a></li>
+                        <li><a href="nutrition.html">Lunch Menu</a></li>
+                        <li><a href="#">Library Catalog</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Follow Us</h4>
+                    <div class="social">
+                        <a href="#">Facebook</a>
+                        <a href="#">Instagram</a>
+                        <a href="#">Twitter</a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2026 Kongunga High School. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <script>
+        (function() {
+            var slides = document.querySelectorAll('.slide');
+            var dots = document.querySelectorAll('.dot');
+            var prevBtn = document.getElementById('prevSlide');
+            var nextBtn = document.getElementById('nextSlide');
+            
+            var currentSlide = 0;
+            var slideInterval;
+            var intervalTime = 5000;
+            
+            function showSlide(index) {
+                // Stop all videos
+                slides.forEach(function(slide) {
+                    var video = slide.querySelector('video');
+                    if (video) {
+                        video.pause();
+                    }
+                    slide.classList.remove('active');
+                });
+                
+                dots.forEach(function(dot) {
+                    dot.classList.remove('active');
+                });
+                
+                if (slides[index]) {
+                    slides[index].classList.add('active');
+                    // Play the video for the active slide
+                    var activeVideo = slides[index].querySelector('video');
+                    if (activeVideo) {
+                        activeVideo.play();
+                    }
+                }
+                if (dots[index]) dots[index].classList.add('active');
+                currentSlide = index;
+            }
+            
+            function nextSlide() {
+                var newIndex = (currentSlide + 1) % slides.length;
+                showSlide(newIndex);
+            }
+            
+            function prevSlide() {
+                var newIndex = (currentSlide - 1 + slides.length) % slides.length;
+                showSlide(newIndex);
+            }
+            
+            function startSlideshow() {
+                if (slideInterval) clearInterval(slideInterval);
+                slideInterval = setInterval(nextSlide, intervalTime);
+            }
+            
+            function stopSlideshow() {
+                if (slideInterval) {
+                    clearInterval(slideInterval);
+                    slideInterval = null;
+                }
+            }
+            
+            if (nextBtn) {
+                nextBtn.addEventListener('click', function() {
+                    stopSlideshow();
+                    nextSlide();
+                    startSlideshow();
+                });
+            }
+            
+            if (prevBtn) {
+                prevBtn.addEventListener('click', function() {
+                    stopSlideshow();
+                    prevSlide();
+                    startSlideshow();
+                });
+            }
+            
+            dots.forEach(function(dot, index) {
+                dot.addEventListener('click', function() {
+                    stopSlideshow();
+                    showSlide(index);
+                    startSlideshow();
+                });
+            });
+            
+            var container = document.querySelector('.hero-slideshow');
+            if (container) {
+                container.addEventListener('mouseenter', stopSlideshow);
+                container.addEventListener('mouseleave', startSlideshow);
+            }
+            
+            // Play the first video initially
+            var firstVideo = document.querySelector('.slide.active video');
+            if (firstVideo) {
+                firstVideo.play();
+            }
+            
+            startSlideshow();
+        })();
+    </script>
+    <script src="../js/main.js"></script>
+</body>
+</html>

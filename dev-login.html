@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Developer Access - Kongunga High School</title>
+    <link rel="stylesheet" href="../css/main.css">
+</head>
+<body class="auth-page">
+    <div class="auth-container">
+        <div class="auth-box">
+            <div class="auth-header">
+                <div class="css-logo">KHS</div>
+                <h2>Developer Access</h2>
+                <p>Restricted area - Authorized personnel only</p>
+            </div>
+            
+            <!-- Display Django messages -->
+            ">
+                        
+                    </div>
+            <form method="post" action="dev-login.html" id="devLoginForm">
+                
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" name="email" id="devEmail" placeholder="Enter developer email" required>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" name="password" id="devPassword" placeholder="Enter password" required>
+                </div>
+                <button type="submit" class="btn-submit" id="devLoginBtn">Developer Login</button>
+            </form>
+            <div id="devLoginMessage" class="form-message"></div>
+            
+            <div class="auth-footer">
+                <p><a href="index.html">Back to Homepage</a></p>
+            </div>
+        </div>
+    </div>
+    <script>
+        const devLoginForm = document.getElementById('devLoginForm');
+        const devLoginBtn = document.getElementById('devLoginBtn');
+        
+        if (devLoginForm) {
+            devLoginForm.addEventListener('submit', function(e) {
+                const email = document.getElementById('devEmail').value.trim();
+                const password = document.getElementById('devPassword').value;
+                
+                let errors = [];
+                
+                if (!email) {
+                    errors.push('Please enter your email address');
+                } else if (!email.includes('@')) {
+                    errors.push('Please enter a valid email address');
+                }
+                
+                if (!password) {
+                    errors.push('Please enter your password');
+                }
+                
+                if (errors.length > 0) {
+                    e.preventDefault();
+                    showMessage('devLoginMessage', errors.join('<br>'), 'error');
+                    return false;
+                }
+                
+                devLoginBtn.textContent = 'Authenticating...';
+                devLoginBtn.disabled = true;
+                
+                return true;
+            });
+        }
+        function showMessage(elementId, message, type) {
+            const msgDiv = document.getElementById(elementId);
+            if (msgDiv) {
+                msgDiv.innerHTML = message;
+                msgDiv.className = `form-message ${type}`;
+                setTimeout(() => {
+                    msgDiv.innerHTML = '';
+                    msgDiv.className = 'form-message';
+                }, 8000);
+            }
+        }
+        document.addEventListener('DOMContentLoaded', function() {
+            const messages = document.querySelectorAll('.form-message');
+            messages.forEach(function(msg) {
+                setTimeout(function() {
+                    msg.style.display = 'none';
+                }, 8000);
+            });
+        });
+    </script>
+</body>
+</html>

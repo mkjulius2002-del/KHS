@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOS Dashboard - Kongunga High School</title>
+    <link rel="stylesheet" href="../css/main.css">
+</head>
+<body>
+    <div class="top-bar">
+        <div class="container">
+            <div class="contact-info">
+                <span>📞 +256 786706774</span>
+                <span>✉️ info@kongungahighschool.edu</span>
+                <span>📍 Kachumbala, Bukedea, Uganda</span>
+            </div>
+            <div class="auth-links">
+                <span>Welcome, </span>
+                <a href="logout.html">Logout</a>
+            </div>
+        </div>
+    </div>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <div class="css-logo">KHS</div>
+                <h1>Kongunga High <span>School</span></h1>
+            </div>
+            <div class="header-buttons">
+                <a href="admission.html" class="btn-primary">Admissions Open 2026-27</a>
+            </div>
+        </div>
+    </header>
+    <nav>
+        <div class="container">
+            <button class="mobile-menu-btn" id="mobileMenuBtn">☰ Menu</button>
+            <ul id="navMenu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="dos_dashboard.html" class="active">My Dashboard</a></li>
+                
+                <li class="dropdown">
+                    <a href="#">Dashboards ▾</a>
+                    <ul class="dropdown-menu">
+                        
+                        <li><a href="student_dashboard.html">Student Dashboard</a></li>
+                        <li><a href="teacher_dashboard.html">Teacher Dashboard</a></li>
+                        <li><a href="bursar_dashboard.html">Bursar Dashboard</a></li>
+                        <li><a href="dos_dashboard.html">DOS Dashboard</a></li>
+                        <li><a href="deputy_dashboard.html">Deputy Dashboard</a></li>
+                        <li><a href="headteacher_dashboard.html">Headteacher Dashboard</a></li>
+                        <li><a href="admin_dashboard.html">Admin Dashboard</a></li>
+                        
+                    </ul>
+                </li>
+                
+                <li><a href="logout.html">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+    <section class="page-content">
+        <div class="container">
+            <div class="dashboard-container">
+                <!-- Dashboard Header -->
+                <div class="dashboard-header">
+                    <div>
+                        <h1>📚 Director of Studies Dashboard</h1>
+                        <p>Welcome back, !</p>
+                        <p class="dashboard-subtitle">Manage academic records, class allocations, and student performance</p>
+                    </div>
+                </div>
+                <!-- Stats -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h3></h3>
+                        <p>Total Students</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3></h3>
+                        <p>Class Teachers</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3></h3>
+                        <p>Total Classes</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3></h3>
+                        <p>Pending Applications</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3></h3>
+                        <p>Reviewed Applications</p>
+                    </div>
+                </div>
+                <!-- Quick Actions -->
+                <div class="dashboard-grid">
+                    <div class="dashboard-card">
+                        <h3>📋 Class Management</h3>
+                        <div class="action-buttons">
+                            <a href="#" class="btn-action">Assign Class Teacher</a>
+                            <a href="#" class="btn-action">View Class Lists</a>
+                            <a href="#" class="btn-action">Manage Subjects</a>
+                            <a href="#" class="btn-action">Class Reports</a>
+                        </div>
+                    </div>
+                    <div class="dashboard-card">
+                        <h3>📊 Academic Overview</h3>
+                        <div class="info-item">
+                            <span class="label">Total Students</span>
+                            <span class="value"></span>
+                        </div>
+                        <div class="info-item">
+                            <span class="label">Total Classes</span>
+                            <span class="value"></span>
+                        </div>
+                        <div class="info-item">
+                            <span class="label">Total Teachers</span>
+                            <span class="value"></span>
+                        </div>
+                        <div class="info-item">
+                            <span class="label">Student-Teacher Ratio</span>
+                            <span class="value">0:1</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Recent Applications -->
+                <div class="dashboard-card">
+                    <h3>📝 Recent Applications</h3>
+                    <p class="no-data">No recent applications to display.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h3>Kongunga High School</h3>
+                    <p>Affiliated to UNEB<br>Est. 1995</p>
+                </div>
+                <div>
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="academics.html">Academics</a></li>
+                        <li><a href="admission.html">Admission</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#">School Calendar</a></li>
+                        <li><a href="nutrition.html">Lunch Menu</a></li>
+                        <li><a href="#">Library Catalog</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Follow Us</h4>
+                    <div class="social">
+                        <a href="#">Facebook</a>
+                        <a href="#">Instagram</a>
+                        <a href="#">Twitter</a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2026 Kongunga High School. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <script src="../js/main.js"></script>
+</body>
+</html>

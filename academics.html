@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academics - Kongunga High School</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <style>
+        /* Additional styles for the merged academics page */
+        .academics-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .academic-card {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            border: 1px solid #eef2f7;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        .academic-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+            border-color: #2c5f8a;
+        }
+        .academic-card .card-icon {
+            font-size: 48px;
+            display: block;
+            margin-bottom: 20px;
+        }
+        .academic-card h3 {
+            font-size: 22px;
+            color: #1a3a4f;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        .academic-card p {
+            color: #666;
+            font-size: 15px;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+        .academic-card .learn-more {
+            display: inline-block;
+            color: #e67e22;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        .academic-card .learn-more:hover {
+            color: #d35400;
+            transform: translateX(5px);
+        }
+        .academic-card .learn-more::after {
+            content: " →";
+            transition: all 0.3s;
+        }
+        .academic-card .learn-more:hover::after {
+            content: " →";
+            margin-left: 5px;
+        }
+        .academic-card.card-overview .card-icon { color: #2c5f8a; }
+        .academic-card.card-overview:hover { border-color: #2c5f8a; }
+        .academic-card.card-vision .card-icon { color: #e67e22; }
+        .academic-card.card-vision:hover { border-color: #e67e22; }
+        .academic-card.card-curriculum .card-icon { color: #27ae60; }
+        .academic-card.card-curriculum:hover { border-color: #27ae60; }
+        .academics-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 20px;
+        }
+        .academics-intro h2 {
+            font-size: 36px;
+            color: #1a3a4f;
+            margin-bottom: 15px;
+        }
+        .academics-intro p {
+            color: #666;
+            font-size: 18px;
+            line-height: 1.8;
+        }
+        @media (max-width: 992px) {
+            .academics-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        @media (max-width: 768px) {
+            .academics-grid {
+                grid-template-columns: 1fr;
+            }
+            .academics-intro h2 {
+                font-size: 28px;
+            }
+            .academics-intro p {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <div class="container">
+            <div class="contact-info">
+                <span>📞 +256 786706774</span>
+                <span>✉️ info@kongungahighschool.edu</span>
+                <span>📍 Kachumbala, Bukedea, Uganda</span>
+            </div>
+            <div class="auth-links">
+                
+            </div>
+        </div>
+    </div>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <div class="css-logo">KHS</div>
+                <div class="logo-text">
+                    <h1>Kongunga High <span>School</span></h1>
+                    <p>Excellence in Education, Character in Formation</p>
+                </div>
+            </div>
+            <div class="header-buttons">
+                <a href="admission.html" class="btn-primary">Admissions Open 2026-27</a>
+            </div>
+        </div>
+    </header>
+    <nav>
+        <div class="container">
+            <button class="mobile-menu-btn" id="mobileMenuBtn">☰ Menu</button>
+            <ul id="navMenu">
+                <li><a href="index.html">Home</a></li>
+                <li class="dropdown"><a href="about.html">About Us </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="head-of-school.html">Head of School</a></li>
+                        <li><a href="admission-list.html">Admitted students</a></li>
+                        <li><a href="mission.html">Our Mission</a></li>
+                        <li><a href="employment.html">Employment</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="vision.html">Our Vision</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown"><a href="academics.html" class="active">Academics </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="admission-list.html">Admitted students</a></li>
+                        <li><a href="future-prospects.html">Future Prospects</a></li>
+                        <li><a href="school-counseling.html">School Counseling</a></li>
+                        <li><a href="school-syllabus.html">School Syllabus</a></li>
+                        <li><a href="school-library.html">School Library</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown"><a href="#">Student Life </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="clubs.html">Clubs and Activities</a></li>
+                        <li><a href="student-news.html">Student News and Events</a></li>
+                        <li><a href="admission-list.html">Admitted students</a></li>
+                        <li><a href="spiritual-life.html">Spiritual Life</a></li>
+                        <li><a href="health.html">Health Services</a></li>
+                        <li><a href="community-service.html">Community Service</a></li>
+                        <li><a href="nutrition.html">Nutrition and Dining</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown"><a href="admission.html">Admissions </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="welcome.html">Welcome to Kongunga</a></li>
+                        <li><a href="admission-list.html">Admitted students</a></li>
+                        <li><a href="apply.html">Apply to Kongunga</a></li>
+                        <li><a href="location.html">School Location</a></li>
+                        <li><a href="fees.html">Fees Structure</a></li>
+                        <li><a href="requirements.html">Admission Requirements</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown"><a href="staff.html">Staff </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="board-of-governors.html">Board of Governors</a></li>
+                        <li><a href="pta-board.html">PTA Board</a></li>
+                        <li><a href="admission-list.html">Admitted students</a></li>
+                        <li><a href="teaching-staff.html">Teaching Staff</a></li>
+                        <li><a href="non-teaching-staff.html">Non-Teaching Staff</a></li>
+                        <li><a href="headteacher-previous.html">Previous Headteachers</a></li>
+                    </ul>
+                </li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="results.html">Results</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                
+            </ul>
+        </div>
+    </nav>
+    <!-- PAGE HEADER WITH BANNER IMAGE -->
+    <section class="page-header tall" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.7)), url(&quot;&quot;); background-size: cover; background-position: center;">
+        <div class="container">
+            <h1>Academics</h1>
+            <p>Excellence in Education, Character in Formation</p>
+        </div>
+    </section>
+    <section class="page-content">
+        <div class="container">
+            
+            <!-- Intro Section -->
+            <div class="academics-intro">
+                <h2>Our Academic Programs</h2>
+                <p>At Kongunga High School, we are committed to providing a holistic education that nurtures academic excellence, character development, and lifelong learning. Our academic programs are designed to prepare students for success in higher education and beyond.</p>
+            </div>
+            <!-- Three Cards in a Row -->
+            <div class="academics-grid">
+                
+                <!-- Academic Overview Card -->
+                <div class="academic-card card-overview">
+                    <span class="card-icon">📚</span>
+                    <h3>Academic Overview</h3>
+                    <p>Kongunga High School offers a comprehensive and balanced curriculum that caters to the diverse needs of our students. We follow the Ugandan national curriculum and prepare students for both O-Level and A-Level examinations.</p>
+                    <a href="academic-overview.html" class="learn-more">Learn More</a>
+                </div>
+                <!-- Academic Vision Card -->
+                <div class="academic-card card-vision">
+                    <span class="card-icon">🎯</span>
+                    <h3>Academic Vision</h3>
+                    <p>Our vision is to be a center of academic excellence that produces well-rounded, critical thinkers who are equipped to compete globally while remaining grounded in Ugandan values and culture.</p>
+                    <a href="academic-vision.html" class="learn-more">Learn More</a>
+                </div>
+                <!-- Academic Curriculum Card -->
+                <div class="academic-card card-curriculum">
+                    <span class="card-icon">📖</span>
+                    <h3>Academic Curriculum</h3>
+                    <p>Our curriculum is designed to provide a balanced education that includes sciences, humanities, arts, and vocational subjects. We emphasize practical skills, critical thinking, and character development.</p>
+                    <a href="academic-curriculum.html" class="learn-more">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+                    
+    <!-- PAGE HEADER WITH BANNER IMAGE -->
+    <section class="academics-main">
+        <div class="container">
+            <div class="academic-levels">
+                <div class="level-card">
+                    <div class="level-icon">📚</div>
+                    <h3>O-Level (S1 - S4)</h3>
+                    <p>Foundation years focusing on core subjects and character development. Students sit for the Uganda Certificate of Education (UCE) examinations.</p>
+                    <ul>
+                        <li>Mathematics</li>
+                        <li>English Language</li>
+                        <li>Sciences (Physics, Chemistry, Biology)</li>
+                        <li>Humanities (History, Geography, CRE)</li>
+                        <li>Computer Science</li>
+                    </ul>
+                </div>
+                <div class="level-card">
+                    <div class="level-icon">🎓</div>
+                    <h3>A-Level (S5 - S6)</h3>
+                    <p>Advanced studies preparing students for university. Students sit for the Uganda Advanced Certificate of Education (UACE) examinations.</p>
+                    <ul>
+                        <li>Science Combinations</li>
+                        <li>Arts Combinations</li>
+                        <li>Business Combinations</li>
+                        <li>ICT and Computer Science</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="curriculum-highlights">
+                <h2>Curriculum Highlights</h2>
+                <div class="highlights-grid">
+                    <div class="highlight">
+                        <h3>STEM Education</h3>
+                        <p>Strong focus on Science, Technology, Engineering, and Mathematics with modern laboratories.</p>
+                    </div>
+                    <div class="highlight">
+                        <h3>Arts & Humanities</h3>
+                        <p>Rich programs in Literature, History, Economics, and Creative Arts.</p>
+                    </div>
+                    <div class="highlight">
+                        <h3>ICT Integration</h3>
+                        <p>Computer labs, smart classrooms, and digital learning resources.</p>
+                    </div>
+                    <div class="highlight">
+                        <h3>Career Guidance</h3>
+                        <p>Comprehensive counseling and career pathway planning.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Back Link -->
+    <div style="text-align: center; margin-top: 50px; padding-top: 30px; border-top: 1px solid #eef2f7;">
+        <a href="academics.html" class="back-link">← Back to Academics</a>
+    </div>
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h3>Kongunga High School</h3>
+                    <p>Affiliated to UNEB<br>Est. 1995</p>
+                </div>
+                <div>
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="academics.html">Academics</a></li>
+                        <li><a href="admission.html">Admission</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#">School Calendar</a></li>
+                        <li><a href="nutrition.html">Lunch Menu</a></li>
+                        <li><a href="#">Library Catalog</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Follow Us</h4>
+                    <div class="social">
+                        <a href="#">Facebook</a>
+                        <a href="#">Instagram</a>
+                        <a href="#">Twitter</a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2026 Kongunga High School. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <script src="../js/main.js"></script>
+</body>
+</html>

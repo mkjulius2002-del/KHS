@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard - Kongunga High School</title>
+    <link rel="stylesheet" href="../css/main.css">
+</head>
+<body>
+    <div class="top-bar">
+        <div class="container">
+            <div class="contact-info">
+                <span>📞 +256 786706774</span>
+                <span>✉️ info@kongungahighschool.edu</span>
+                <span>📍 Kachumbala, Bukedea, Uganda</span>
+            </div>
+            <div class="auth-links">
+                <span>Welcome, </span>
+                <a href="logout.html">Logout</a>
+            </div>
+        </div>
+    </div>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <div class="css-logo">KHS</div>
+                <h1>Kongunga High <span>School</span></h1>
+            </div>
+            <div class="header-buttons">
+                <a href="admission.html" class="btn-primary">Admissions Open 2026-27</a>
+            </div>
+        </div>
+    </header>
+    <nav>
+        <div class="container">
+            <button class="mobile-menu-btn" id="mobileMenuBtn">☰ Menu</button>
+            <ul id="navMenu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="student_dashboard.html" class="active">My Dashboard</a></li>
+                
+                <li class="dropdown">
+                    <a href="#">Dashboards ▾</a>
+                    <ul class="dropdown-menu">
+                        
+                        <li><a href="student_dashboard.html">Student Dashboard</a></li>
+                        <li><a href="teacher_dashboard.html">Teacher Dashboard</a></li>
+                        <li><a href="bursar_dashboard.html">Bursar Dashboard</a></li>
+                        <li><a href="dos_dashboard.html">DOS Dashboard</a></li>
+                        <li><a href="deputy_dashboard.html">Deputy Dashboard</a></li>
+                        <li><a href="headteacher_dashboard.html">Headteacher Dashboard</a></li>
+                        <li><a href="admin_dashboard.html">Admin Dashboard</a></li>
+                        
+                    </ul>
+                </li>
+                
+                <li><a href="logout.html">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+    <section class="page-content">
+        <div class="container">
+            <div class="dashboard-container">
+                <!-- Dashboard Header -->
+                <div class="dashboard-header">
+                    <div>
+                        <h1>Student Dashboard</h1>
+                        <p>Welcome back, !</p>
+                    </div>
+                    <div>
+                        
+                            <span class="status-badge status-accepted">✅ Accepted</span>
+                        
+                            <span class="status-badge status-pending">⏳ Pending</span>
+                        
+                            <span class="status-badge status-reviewed">📋 Reviewed</span>
+                        
+                            <span class="status-badge status-rejected">❌ Rejected</span>
+                        
+                    </div>
+                </div>
+                    <div class="dashboard-grid">
+                        <!-- Personal Information -->
+                        <div class="dashboard-card">
+                            <h3>👤 Personal Information</h3>
+                            <div class="info-item">
+                                <span class="label">Student Name</span>
+                                <span class="value"></span>
+                            </div>
+                            <div class="info-item">
+                                <span class="label">Student Number</span>
+                                <span class="value"></span>
+                            </div>
+                            <div class="info-item">
+                                <span class="label">Gender</span>
+                                <span class="value"></span>
+                            </div>
+                            <div class="info-item">
+                                <span class="label">Date of Birth</span>
+                                <span class="value"></span>
+                            </div>
+                        </div>
+                        <!-- Academic Information -->
+                        <div class="dashboard-card">
+                            <h3>📚 Academic Information</h3>
+                            <div class="info-item">
+                                <span class="label">Level</span>
+                                <span class="value"></span>
+                            </div>
+                            <div class="info-item">
+                                <span class="label">Class</span>
+                                <span class="value"></span>
+                            </div>
+                            <div class="info-item">
+                                <span class="label">Stream</span>
+                                <span class="value"></span>
+                            </div>
+                            <div class="info-item">
+                                <span class="label">Application Status</span>
+                                <span class="value"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Admission Letter Section -->
+                    
+                        <div class="dashboard-card admission-letter">
+                            <h3>📄 Admission Letter</h3>
+                            <p>Congratulations! You have been admitted to Kongunga High School. Download your official admission letter below.</p>
+                            <a href="" class="btn-download">
+                                📥 Download Admission Letter (PDF)
+                            </a>
+                            <p class="small-text">The admission letter contains your student number and official admission details.</p>
+                        </div>
+                    
+                        <div class="dashboard-card status-pending-card">
+                            <h3>⏳ Application Under Review</h3>
+                            <p>Your application is currently pending review. You will receive a notification once your application has been processed. Please check back later.</p>
+                        </div>
+                    
+                        <div class="dashboard-card status-reviewed-card">
+                            <h3>📋 Application Reviewed</h3>
+                            <p>Your application has been reviewed. You will receive a final decision soon. Please check back later.</p>
+                        </div>
+                    
+                        <div class="dashboard-card status-rejected-card">
+                            <h3>❌ Application Rejected</h3>
+                            <p>Unfortunately, your application was not successful. Please contact the admissions office for more information.</p>
+                        </div>
+                    <div class="dashboard-card no-application">
+                        <h3>📝 No Application Found</h3>
+                        <p>You haven't submitted an application yet. Click the button below to apply.</p>
+                        <a href="apply.html" class="btn-apply">📝 Submit Application</a>
+                    </div>
+                
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h3>Kongunga High School</h3>
+                    <p>Affiliated to UNEB<br>Est. 1995</p>
+                </div>
+                <div>
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="academics.html">Academics</a></li>
+                        <li><a href="admission.html">Admission</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#">School Calendar</a></li>
+                        <li><a href="nutrition.html">Lunch Menu</a></li>
+                        <li><a href="#">Library Catalog</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Follow Us</h4>
+                    <div class="social">
+                        <a href="#">Facebook</a>
+                        <a href="#">Instagram</a>
+                        <a href="#">Twitter</a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2026 Kongunga High School. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <script src="../js/main.js"></script>
+</body>
+</html>

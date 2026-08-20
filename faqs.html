@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQs - Kongunga High School</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <style>
+        .page-header {
+            background: linear-gradient(135deg, #1a3a4f, #2c5f8a);
+            color: white;
+            text-align: center;
+            padding: 80px 0;
+        }
+        .page-header h1 {
+            font-size: 42px;
+            margin-bottom: 15px;
+        }
+        .page-header p {
+            font-size: 20px;
+            opacity: 0.9;
+        }
+        .content-section {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+        .faq-item {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .faq-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+        }
+        .faq-question {
+            color: #1a3a4f;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .faq-answer {
+            color: #555;
+            line-height: 1.8;
+            display: none;
+            padding-top: 10px;
+            border-top: 1px solid #eee;
+        }
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+        .faq-toggle {
+            font-size: 24px;
+            color: #e67e22;
+            transition: transform 0.3s;
+        }
+        .faq-item.active .faq-toggle {
+            transform: rotate(45deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <div class="container">
+            <div class="contact-info">
+                <span>📞 +256 786706774</span>
+                <span>✉️ info@kongungahighschool.edu</span>
+                <span>📍 Kachumbala, Bukedea, Uganda</span>
+            </div>
+        </div>
+    </div>
+
+    <header>
+        <div class="container">
+            <div class="logo">
+                <div class="css-logo">KHS</div>
+                <div class="logo-text">
+                    <h1>Kongunga High <span>School</span></h1>
+                    <p>Excellence in Education, Character in Formation</p>
+                </div>
+            </div>
+            <div class="header-buttons">
+                <a href="admission.html" class="btn-primary">Admissions Open 2026-27</a>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <button class="mobile-menu-btn" id="mobileMenuBtn">☰ Menu</button>
+            <ul id="navMenu">
+                <li><a href="index.html">Home</a></li>
+                <li class="dropdown"><a href="about.html">About Us</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="head-of-school.html">Head of School</a></li>
+                        <li><a href="admission-list.html">Admitted students</a></li>
+                        <li><a href="employment.html">Employment</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown"><a href="academics.html">Academics</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="future-prospects.html">Future Prospects</a></li>
+                        <li><a href="school-counseling.html">School Counseling</a></li>
+                        <li><a href="school-syllabus.html">School Syllabus</a></li>
+                        <li><a href="school-library.html">School Library</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown"><a href="admission.html">Admissions</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="welcome.html">Welcome to Kongunga</a></li>
+                        <li><a href="apply.html">Apply to Kongunga</a></li>
+                        <li><a href="fees.html">Fees Structure</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown"><a href="staff.html">Staff</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="board-of-governors.html">Board of Governors</a></li>
+                        <li><a href="pta-board.html">PTA Board</a></li>
+                        <li><a href="teaching-staff.html">Teaching Staff</a></li>
+                        <li><a href="non-teaching-staff.html">Non-Teaching Staff</a></li>
+                    </ul>
+                </li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="results.html">Results</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>Frequently Asked Questions</h1>
+            <p>Find answers to common questions about Kongunga High School</p>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="faq-item">
+            <div class="faq-question">
+                When is the admission deadline?
+                <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+                <p>Admissions for the 2026-27 academic year are currently open. We encourage early applications as seats are limited. The deadline will be announced on our website and social media pages.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">
+                What are the school fees?
+                <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+                <p>Our fees vary depending on the level (O-Level or A-Level) and whether the student is a boarder or day scholar. Please visit our <a href="fees.html" style="color: #e67e22;">Fees Structure</a> page for detailed information.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">
+                Is there a scholarship program?
+                <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+                <p>Yes, we offer merit-based and need-based scholarships for outstanding students. Please contact our admissions office for more information about available scholarships and the application process.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">
+                What extracurricular activities are available?
+                <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+                <p>We offer a wide range of clubs and activities including Science Club, ICT Club, Debate Club, Football, Netball, Basketball, Drama, Music, and many more. Students are encouraged to participate in at least one activity.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">
+                How can I schedule a school visit?
+                <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+                <p>School tours are available Monday through Friday. Please contact our admissions office at +256 786706774 or email info@kongungahighschool.edu to schedule your visit.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h3>Kongunga High School</h3>
+                    <p>Affiliated to UNEB<br>Est. 1995</p>
+                </div>
+                <div>
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="academics.html">Academics</a></li>
+                        <li><a href="admission.html">Admission</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#">School Calendar</a></li>
+                        <li><a href="nutrition.html">Lunch Menu</a></li>
+                        <li><a href="#">Library Catalog</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Follow Us</h4>
+                    <div class="social">
+                        <a href="#">Facebook</a>
+                        <a href="#">Instagram</a>
+                        <a href="#">Twitter</a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2026 Kongunga High School. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script>
+        document.querySelectorAll('.faq-item').forEach(item => {
+            item.addEventListener('click', () => {
+                item.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>

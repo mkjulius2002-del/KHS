@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Results - Kongunga High School</title>
+    <link rel="stylesheet" href="../css/main.css">
+</head>
+<body>
+    <div class="top-bar">
+        <div class="container">
+            <div class="contact-info">
+                <span>📞 +256 786706774</span>
+                <span>✉️ info@kongungahighschool.edu</span>
+                <span>📍 Kachumbala, Bukedea, Uganda</span>
+            </div>
+            <div class="auth-links">
+                
+            </div>
+        </div>
+    </div>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <div class="css-logo">KHS</div>
+                <h1>Kongunga High <span>School</span></h1>
+            </div>
+            <div class="header-buttons">
+                <a href="admission.html" class="btn-primary">Admissions Open 2026-27</a>
+            </div>
+        </div>
+    </header>
+    <nav>
+        <div class="container">
+            <button class="mobile-menu-btn" id="mobileMenuBtn">☰ Menu</button>
+            <ul id="navMenu">
+                <li><a href="index.html">Home</a></li>
+                <li class="dropdown"><a href="about.html">About Us </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="head-of-school.html">Head of School</a></li>
+                        <li><a href="employment.html">Employment</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown"><a href="academics.html">Academics </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="future-prospects.html">Future Prospects</a></li>
+                        <li><a href="school-counseling.html">School Counseling</a></li>
+                        <li><a href="school-syllabus.html">School Syllabus</a></li>
+                        <li><a href="school-library.html">School Library</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown"><a href="#">Student Life </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="clubs.html">Clubs and Activities</a></li>
+                        <li><a href="student-news.html">Student News and Events</a></li>
+                        <li><a href="spiritual-life.html">Spiritual Life</a></li>
+                        <li><a href="health.html">Health Services</a></li>
+                        <li><a href="community-service.html">Community Service</a></li>
+                        <li><a href="nutrition.html">Nutrition and Dining</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown"><a href="admission.html">Admissions </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="welcome.html">Welcome to Kongunga</a></li>
+                        <li><a href="apply.html">Apply to Kongunga</a></li>
+                        <li><a href="fees.html">Fees Structure</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown"><a href="staff.html">Staff </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="board-of-governors.html">Board of Governors</a></li>
+                        <li><a href="pta-board.html">PTA Board</a></li>
+                        <li><a href="teaching-staff.html">Teaching Staff</a></li>
+                        <li><a href="non-teaching-staff.html">Non-Teaching Staff</a></li>
+                        <li><a href="headteacher-previous.html">Previous Headteachers</a></li>
+                    </ul>
+                </li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="results.html" class="active">Results</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                
+            </ul>
+        </div>
+    </nav>
+    <!-- PAGE HEADER WITH BANNER IMAGE -->
+    <section class="page-header tall" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.7)), url(&quot;&quot;); background-size: cover; background-position: center;">
+        <div class="container">
+            <h1>Exam Results</h1>
+            <p>Check your academic performance</p>
+        </div>
+    </section>
+    <section class="results-content">
+        <div class="container">
+            <div class="result-search">
+                <h2>Check Your Result</h2>
+                <form id="resultSearchForm">
+                    <div class="search-grid">
+                        <div class="form-group">
+                            <label>Roll Number *</label>
+                            <input type="text" id="rollNumber" placeholder="Enter Roll Number" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Select Exam *</label>
+                            <select id="examType" required>
+                                <option value="">Select Exam</option>
+                                <option value="halfyearly">Half Yearly Exam 2025-26</option>
+                                <option value="annual">Annual Exam 2024-25</option>
+                                <option value="unit1">Unit Test 1 2025-26</option>
+                                <option value="preboard">Pre-Board Exam 2025-26</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Date of Birth *</label>
+                            <input type="date" id="dobResult" required>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn-submit">Get Result</button>
+                </form>
+                <div id="resultMessage" class="form-message"></div>
+            </div>
+            <div id="resultCard" class="result-card" style="display: none;">
+                <div class="result-header">
+                    <h3>Kongunga High School</h3>
+                    <p>Half Yearly Examination - 2025-26</p>
+                </div>
+                
+                <div class="student-info">
+                    <div>
+                        <p><strong>Student Name:</strong> Aarav Sharma</p>
+                        <p><strong>Class:</strong> S.4 - A</p>
+                        <p><strong>Roll Number:</strong> 24</p>
+                    </div>
+                    <div>
+                        <p><strong>Father's Name:</strong> Mr. Rajesh Sharma</p>
+                        <p><strong>Mother's Name:</strong> Mrs. Neha Sharma</p>
+                        <p><strong>Date of Birth:</strong> 15-08-2010</p>
+                    </div>
+                </div>
+                <table class="result-table">
+                    <thead>
+                        <tr><th>Subject</th><th>Max Marks</th><th>Obtained Marks</th><th>Grade</th><th>Result</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Mathematics</td><td>100</td><td>85</td><td>A</td><td>Pass</td></tr>
+                        <tr><td>Physics</td><td>100</td><td>78</td><td>B+</td><td>Pass</td></tr>
+                        <tr><td>Chemistry</td><td>100</td><td>82</td><td>A</td><td>Pass</td></tr>
+                        <tr><td>Biology</td><td>100</td><td>90</td><td>A+</td><td>Pass</td></tr>
+                        <tr><td>English</td><td>100</td><td>88</td><td>A</td><td>Pass</td></tr>
+                        <tr><td>Computer Science</td><td>100</td><td>95</td><td>A+</td><td>Pass</td></tr>
+                    </tbody>
+                    <tfoot>
+                        <tr class="total-row"><td><strong>Total</strong></td><td><strong>600</strong></td><td><strong>518</strong></td><td colspan="2"><strong>Percentage: 86.33%</strong></td></tr>
+                        <tr class="result-row"><td colspan="5"><strong>Final Result: PASSED WITH DISTINCTION</strong></td></tr>
+                    </tfoot>
+                </table>
+                <div class="result-footer">
+                    <p>* This is a computer generated result. No signature required.</p>
+                    <button class="btn-primary" onclick="window.print()">📄 Download / Print Result</button>
+                </div>
+            </div>
+            <div class="previous-results">
+                <h2>📊 Previous Results (Class S.3)</h2>
+                <div class="previous-grid">
+                    <div class="previous-card"><h3>Annual Exam 2024-25</h3><p>Percentage: 82.5%</p><p>Grade: A</p><a href="#">View Details →</a></div>
+                    <div class="previous-card"><h3>Half Yearly 2024-25</h3><p>Percentage: 79.8%</p><p>Grade: B+</p><a href="#">View Details →</a></div>
+                    <div class="previous-card"><h3>Unit Test 2 2024-25</h3><p>Percentage: 86.2%</p><p>Grade: A</p><a href="#">View Details →</a></div>
+                </div>
+            </div>
+            <div class="toppers-section">
+                <h2>🏆 Class Toppers - Half Yearly Exam 2025-26</h2>
+                <div class="toppers-grid">
+                    <div class="topper-card gold"><div class="rank">🥇 1st Rank</div><h3>Aarav Sharma</h3><p>Class S.4 - A</p><p>Percentage: 94.5%</p></div>
+                    <div class="topper-card silver"><div class="rank">🥈 2nd Rank</div><h3>Aditya Singh</h3><p>Class S.4 - B</p><p>Percentage: 92.3%</p></div>
+                    <div class="topper-card bronze"><div class="rank">🥉 3rd Rank</div><h3>Priya Patel</h3><p>Class S.4 - A</p><p>Percentage: 91.8%</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div><h3>Kongunga High School</h3><p>Affiliated to UNEB<br>Est. 1995</p></div>
+                <div><h4>Quick Links</h4><ul><li><a href="about.html">About Us</a></li><li><a href="academics.html">Academics</a></li><li><a href="admission.html">Admission</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+                <div><h4>Resources</h4><ul><li><a href="#">School Calendar</a></li><li><a href="#">Lunch Menu</a></li><li><a href="#">Library Catalog</a></li></ul></div>
+                <div><h4>Follow Us</h4><div class="social"><a href="#">Facebook</a> <a href="#">Instagram</a> <a href="#">Twitter</a></div></div>
+            </div>
+            <div class="copyright"><p>&copy; 2026 Kongunga High School. All rights reserved.</p></div>
+        </div>
+    </footer>
+    <script src="../js/main.js"></script>
+    <script>
+        const resultForm = document.getElementById('resultSearchForm');
+        if (resultForm) {
+            resultForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const rollNo = document.getElementById('rollNumber').value;
+                const examType = document.getElementById('examType').value;
+                const dob = document.getElementById('dobResult').value;
+                
+                if (!rollNo || !examType || !dob) {
+                    showMessage('resultMessage', 'Please fill all fields', 'error');
+                    return;
+                }
+                
+                const resultCard = document.getElementById('resultCard');
+                if (resultCard) {
+                    resultCard.style.display = 'block';
+                    resultCard.scrollIntoView({ behavior: 'smooth' });
+                    showMessage('resultMessage', 'Result found successfully!', 'success');
+                }
+            });
+        }
+        function showMessage(elementId, message, type) {
+            const msgDiv = document.getElementById(elementId);
+            if (msgDiv) {
+                msgDiv.innerHTML = message;
+                msgDiv.className = `form-message ${type}`;
+                setTimeout(() => {
+                    msgDiv.innerHTML = '';
+                    msgDiv.className = 'form-message';
+                }, 5000);
+            }
+        }
+    </script>
+</body>
+</html>
