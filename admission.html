@@ -433,19 +433,13 @@
             <div class="copyright"><p>&copy; 2026 Kongunga High School. All rights reserved.</p></div>
         </div>
     </footer>
-    <script src="../js/main.js"></script>
+    <script src="main.js"></script>
     <script>
         // ============================================================
-        // FIXED: AUTH CHECK - defined properly
+        // AUTH CHECK DISABLED - No login required
         // ============================================================
-        var isUserAuthenticated = false; // Set to true if user is logged in
-
         function checkAuthAndSubmit(formElement, callback) {
-            if (!isUserAuthenticated) {
-                alert('Please login or create an account to submit your application.');
-                window.location.href = '/login/?next=/apply/';
-                return false;
-            }
+            // No login check - always allows submission
             if (callback) callback();
             return true;
         }
@@ -464,7 +458,6 @@
                         var file = this.files[0];
                         var fileSize = (file.size / 1024 / 1024).toFixed(2);
                         
-                        // Validate file type
                         var allowedTypes = ['pdf', 'jpg', 'jpeg', 'png'];
                         if (!allowedTypes.includes(file.name.split('.').pop().toLowerCase())) {
                             alert('Please upload a valid file format: PDF, JPG, JPEG, or PNG');
@@ -473,7 +466,6 @@
                             return;
                         }
                         
-                        // Validate file size (5MB max)
                         if (file.size > 5 * 1024 * 1024) {
                             alert('File size exceeds 5MB limit. Please compress your file.');
                             this.value = '';
@@ -497,13 +489,13 @@
             }
         }
 
-        // Setup file uploads for all forms
+        // Setup file uploads
         setupFileUpload('olevelResultSlip', 'olevelFileName', 'olevelFileNameText');
         setupFileUpload('artsResultSlip', 'artsFileName', 'artsFileNameText');
         setupFileUpload('scienceResultSlip', 'scienceFileName', 'scienceFileNameText');
 
         // ============================================================
-        // FIXED: FORM TOGGLE LOGIC - WORKS CORRECTLY NOW
+        // FORM TOGGLE LOGIC
         // ============================================================
         var olevelBtn = document.getElementById('olevelBtn');
         var alevelBtn = document.getElementById('alevelBtn');
@@ -520,7 +512,6 @@
             if (scienceForm) scienceForm.style.display = 'none';
         }
 
-        // O-LEVEL BUTTON
         if (olevelBtn) {
             olevelBtn.addEventListener('click', function() {
                 hideAllForms();
@@ -533,11 +524,9 @@
             });
         }
 
-        // A-LEVEL BUTTON - shows Arts and Science forms on the SAME page
         if (alevelBtn) {
             alevelBtn.addEventListener('click', function() {
                 hideAllForms();
-                // Show both Arts and Science forms side by side or stacked
                 if (artsForm) artsForm.style.display = 'block';
                 if (scienceForm) scienceForm.style.display = 'block';
                 setTimeout(function() {
@@ -546,21 +535,18 @@
             });
         }
 
-        // Back from O-Level
         if (backFromOlevel) {
             backFromOlevel.addEventListener('click', function() {
                 if (olevelForm) olevelForm.style.display = 'none';
             });
         }
 
-        // Back from Arts
         if (backFromArts) {
             backFromArts.addEventListener('click', function() {
                 if (artsForm) artsForm.style.display = 'none';
             });
         }
 
-        // Back from Science
         if (backFromScience) {
             backFromScience.addEventListener('click', function() {
                 if (scienceForm) scienceForm.style.display = 'none';
@@ -619,7 +605,7 @@
         scienceSubsidiaries.forEach(function(cb) { cb.addEventListener('change', updateScienceSelection); });
 
         // ============================================================
-        // FORM SUBMISSIONS (Frontend validation only)
+        // FORM SUBMISSIONS - No login required
         // ============================================================
         document.getElementById('olevelAdmissionForm')?.addEventListener('submit', function(e) {
             var fileInput = document.getElementById('olevelResultSlip');
@@ -628,9 +614,7 @@
                 alert('Please upload the PLE Result Slip.');
                 return;
             }
-            if (!checkAuthAndSubmit(this)) {
-                e.preventDefault();
-            }
+            alert('✅ Your O-Level application has been submitted successfully! We will contact you shortly.');
         });
 
         document.getElementById('artsAdmissionForm')?.addEventListener('submit', function(e) {
@@ -655,9 +639,7 @@
                 return;
             }
             
-            if (!checkAuthAndSubmit(this)) {
-                e.preventDefault();
-            }
+            alert('✅ Your A-Level ARTS application has been submitted successfully! We will contact you shortly.');
         });
 
         document.getElementById('scienceAdmissionForm')?.addEventListener('submit', function(e) {
@@ -682,9 +664,7 @@
                 return;
             }
             
-            if (!checkAuthAndSubmit(this)) {
-                e.preventDefault();
-            }
+            alert('✅ Your A-Level SCIENCE application has been submitted successfully! We will contact you shortly.');
         });
     </script>
 </body>
