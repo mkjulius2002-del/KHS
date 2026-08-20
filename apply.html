@@ -1,456 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Apply to Kongunga High School</title>
-    <link rel="stylesheet" href="/KHS/css/main.css" />
-    <style>
-        /* ----- global reset / base ----- */
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-        body {
-            font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
-            background: #f4f7fa;
-            color: #1e2b37;
-        }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* ----- top bar / header / nav (matching your site) ----- */
-        .top-bar {
-            background: #0f293b;
-            color: #fff;
-            padding: 8px 0;
-            font-size: 14px;
-        }
-        .top-bar .container {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-        }
-        .top-bar .contact-info span {
-            margin-right: 20px;
-        }
-        header {
-            background: #fff;
-            padding: 15px 0;
-            border-bottom: 2px solid #e0e7ed;
-        }
-        header .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        .css-logo {
-            background: #1a3a4f;
-            color: #fff;
-            font-weight: 800;
-            font-size: 26px;
-            padding: 6px 14px;
-            border-radius: 8px;
-        }
-        .logo-text h1 {
-            font-size: 24px;
-            color: #1a3a4f;
-        }
-        .logo-text h1 span {
-            color: #e67e22;
-        }
-        .logo-text p {
-            font-size: 13px;
-            color: #666;
-            letter-spacing: 1px;
-        }
-
-        nav {
-            background: #1a3a4f;
-            padding: 0;
-        }
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 0;
-            flex-wrap: wrap;
-        }
-        nav ul li a {
-            display: block;
-            padding: 14px 22px;
-            color: #fff;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 15px;
-            transition: background 0.2s;
-        }
-        nav ul li a:hover,
-        nav ul li a.active {
-            background: #e67e22;
-        }
-
-        /* ----- main apply container ----- */
-        .apply-container {
-            max-width: 1000px;
-            margin: 40px auto;
-            padding: 0 20px 60px;
-        }
-
-        .back-link {
-            display: inline-block;
-            margin-bottom: 30px;
-            color: #1a3a4f;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 16px;
-        }
-        .back-link:hover {
-            text-decoration: underline;
-        }
-
-        .page-title {
-            text-align: center;
-            margin-bottom: 10px;
-        }
-        .page-title h1 {
-            font-size: 36px;
-            color: #1a3a4f;
-        }
-        .page-title p {
-            color: #666;
-            font-size: 18px;
-        }
-
-        /* ----- step indicator ----- */
-        .step-indicator {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 8px;
-            margin: 40px 0 50px;
-        }
-        .step-circle {
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            background: #d0d8e0;
-            color: #555;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 18px;
-            transition: 0.3s;
-        }
-        .step-circle.active {
-            background: #1a3a4f;
-            color: #fff;
-        }
-        .step-circle.completed {
-            background: #27ae60;
-            color: #fff;
-        }
-        .step-line {
-            width: 50px;
-            height: 4px;
-            background: #d0d8e0;
-            border-radius: 4px;
-            transition: 0.3s;
-        }
-        .step-line.active {
-            background: #1a3a4f;
-        }
-
-        /* ----- step content ----- */
-        .step-content {
-            display: none;
-            animation: fadeUp 0.4s ease;
-        }
-        .step-content.active {
-            display: block;
-        }
-
-        @keyframes fadeUp {
-            0% {
-                opacity: 0;
-                transform: translateY(24px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* ----- level cards (O / A) ----- */
-        .level-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-            max-width: 700px;
-            margin: 0 auto;
-        }
-        .level-card {
-            background: #fff;
-            border: 3px solid #e0e7ed;
-            border-radius: 16px;
-            padding: 40px 20px;
-            text-align: center;
-            cursor: pointer;
-            transition: 0.25s;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
-        }
-        .level-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
-        }
-        .level-card.selected {
-            border-color: #1a3a4f;
-            background: #eaf1f7;
-        }
-        .level-card .icon {
-            font-size: 48px;
-            display: block;
-            margin-bottom: 12px;
-        }
-        .level-card h3 {
-            font-size: 30px;
-            color: #1a3a4f;
-        }
-        .level-card p {
-            color: #556b7c;
-            font-size: 15px;
-            margin-top: 4px;
-        }
-
-        /* ----- stream cards (Arts / Science) ----- */
-        .stream-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-            max-width: 700px;
-            margin: 0 auto;
-        }
-        .stream-card {
-            background: #fff;
-            border: 3px solid #e0e7ed;
-            border-radius: 16px;
-            padding: 32px 20px;
-            text-align: center;
-            cursor: pointer;
-            transition: 0.25s;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
-        }
-        .stream-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
-        }
-        .stream-card.selected {
-            border-color: #1a3a4f;
-            background: #eaf1f7;
-        }
-        .stream-card .icon {
-            font-size: 40px;
-            display: block;
-            margin-bottom: 8px;
-        }
-        .stream-card h3 {
-            font-size: 26px;
-            color: #1a3a4f;
-        }
-        .stream-card ul {
-            list-style: none;
-            padding: 0;
-            margin: 12px 0 0;
-            font-size: 14px;
-            color: #556b7c;
-        }
-        .stream-card ul li {
-            padding: 2px 0;
-        }
-
-        /* ----- form container ----- */
-        .form-wrap {
-            background: #fff;
-            border-radius: 16px;
-            padding: 40px 36px;
-            max-width: 760px;
-            margin: 0 auto;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
-        }
-        .form-wrap h2 {
-            color: #1a3a4f;
-            font-size: 28px;
-            text-align: center;
-        }
-        .form-wrap .sub {
-            text-align: center;
-            color: #666;
-            margin-bottom: 30px;
-            font-size: 16px;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-        .form-group label {
-            display: block;
-            font-weight: 600;
-            margin-bottom: 5px;
-            font-size: 14px;
-            color: #1e2b37;
-        }
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
-            width: 100%;
-            padding: 12px 14px;
-            border: 2px solid #dce3ea;
-            border-radius: 10px;
-            font-size: 15px;
-            transition: 0.2s;
-            background: #fafcfe;
-        }
-        .form-group input:focus,
-        .form-group select:focus,
-        .form-group textarea:focus {
-            border-color: #1a3a4f;
-            outline: none;
-            background: #fff;
-        }
-        .form-group textarea {
-            min-height: 90px;
-            resize: vertical;
-        }
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
-
-        /* ----- buttons ----- */
-        .btn {
-            display: inline-block;
-            padding: 12px 34px;
-            border: none;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 16px;
-            cursor: pointer;
-            transition: 0.2s;
-            text-decoration: none;
-        }
-        .btn-primary {
-            background: #1a3a4f;
-            color: #fff;
-        }
-        .btn-primary:hover {
-            background: #0f293b;
-            transform: translateY(-2px);
-        }
-        .btn-secondary {
-            background: #e0e7ed;
-            color: #1e2b37;
-        }
-        .btn-secondary:hover {
-            background: #cdd6df;
-        }
-        .btn-success {
-            background: #27ae60;
-            color: #fff;
-        }
-        .btn-success:hover {
-            background: #1e8a4c;
-            transform: translateY(-2px);
-        }
-        .btn-group {
-            display: flex;
-            gap: 16px;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-top: 28px;
-        }
-
-        /* ----- footer ----- */
-        footer {
-            background: #0f293b;
-            color: #cbd8e3;
-            padding: 40px 0 20px;
-            margin-top: 40px;
-        }
-        footer .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 30px;
-        }
-        footer h3,
-        footer h4 {
-            color: #fff;
-        }
-        footer ul {
-            list-style: none;
-            padding: 0;
-        }
-        footer ul li a {
-            color: #cbd8e3;
-            text-decoration: none;
-            font-size: 14px;
-            line-height: 2;
-        }
-        footer ul li a:hover {
-            color: #fff;
-        }
-        footer .copyright {
-            border-top: 1px solid #244b60;
-            padding-top: 18px;
-            margin-top: 28px;
-            text-align: center;
-            font-size: 14px;
-            color: #8aa3b3;
-        }
-
-        /* ----- responsive ----- */
-        @media (max-width: 700px) {
-            .level-grid,
-            .stream-grid,
-            .form-row {
-                grid-template-columns: 1fr;
-            }
-            .step-line {
-                width: 20px;
-            }
-            .form-wrap {
-                padding: 24px 16px;
-            }
-            .page-title h1 {
-                font-size: 28px;
-            }
-            .top-bar .contact-info span {
-                display: inline-block;
-                margin-right: 14px;
-                font-size: 12px;
-            }
-            nav ul {
-                flex-direction: column;
-            }
-            nav ul li a {
-                padding: 10px 18px;
-            }
-        }
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apply to Kongunga - Kongunga High School</title>
+    <link rel="stylesheet" href="../css/main.css">
 </head>
 <body>
-
-    <!-- ===== TOP BAR ===== -->
     <div class="top-bar">
         <div class="container">
             <div class="contact-info">
@@ -458,358 +14,740 @@
                 <span>✉️ info@kongungahighschool.edu</span>
                 <span>📍 Kachumbala, Bukedea, Uganda</span>
             </div>
+            <div class="auth-links">
+                
+            </div>
         </div>
     </div>
-
-    <!-- ===== HEADER ===== -->
     <header>
         <div class="container">
             <div class="logo">
                 <div class="css-logo">KHS</div>
-                <div class="logo-text">
-                    <h1>Kongunga High <span>School</span></h1>
-                    <p>In Pursuit For Excellence</p>
-                </div>
+                <h1>Kongunga High <span>School</span></h1>
+            </div>
+            <div class="header-buttons">
+                <a href="admission.html" class="btn-primary">Admissions Open 2026-27</a>
             </div>
         </div>
     </header>
-
-    <!-- ===== NAV ===== -->
     <nav>
         <div class="container">
-            <ul>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">☰ Menu</button>
+            <ul id="navMenu">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="academics.html">Academics</a></li>
-                <li><a href="admission.html" class="active">Admissions</a></li>
+                <li class="dropdown"><a href="about.html">About Us </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="who_we_are.html">Who We Are</a></li>
+                        <li><a href="head-of-school.html">Head of School</a></li>
+                        <li><a href="admission-list.html">Admitted students</a></li>
+                        <li><a href="employment.html">Employment</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown"><a href="academics.html">Academics </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="future-prospects.html">Future Prospects</a></li>
+                        <li><a href="admission-list.html">Admitted students</a></li>
+                        <li><a href="academics.html">Academics</a></li>
+                        <li><a href="school-counseling.html">School Counseling</a></li>
+                        <li><a href="school-syllabus.html">School Syllabus</a></li>
+                        <li><a href="school-library.html">School Library</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown"><a href="#">Student Life </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="clubs.html">Clubs and Activities</a></li>
+                        <li><a href="student-news.html">Student News and Events</a></li>
+                        <li><a href="spiritual-life.html">Spiritual Life</a></li>
+                        <li><a href="admission-list.html">Admitted students</a></li>
+                        <li><a href="health.html">Health Services</a></li>
+                        <li><a href="community-service.html">Community Service</a></li>
+                        <li><a href="nutrition.html">Nutrition and Dining</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown"><a href="admission.html">Admissions </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="welcome.html">Welcome to Kongunga</a></li>
+                      <li><a href="admission-list.html">Admitted students</a></li>
+                        <li><a href="apply.html">Apply to Kongunga</a></li>
+                        <li><a href="fees.html">Fees Structure</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown"><a href="staff.html">Staff </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="board-of-governors.html">Board of Governors</a></li>
+                        <li><a href="pta-board.html">PTA Board</a></li>
+                        <li><a href="teaching-staff.html">Teaching Staff</a></li>
+                        <li><a href="non-teaching-staff.html">Non-Teaching Staff</a></li>
+                        <li><a href="headteacher-previous.html">Previous Headteachers</a></li>
+                    </ul>
+                </li>
                 <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="results.html">Results</a></li>
                 <li><a href="contact.html">Contact</a></li>
+                
             </ul>
         </div>
     </nav>
-
-    <!-- ===== MAIN APPLICATION ===== -->
-    <div class="apply-container">
-
-        <a href="admission.html" class="back-link">← Back to Admissions</a>
-
-        <div class="page-title">
-            <h1>Start Your Application</h1>
-            <p>Select your level below to begin the application process</p>
+    <!-- PAGE HEADER -->
+    <section class="page-header tall" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.7)), url(&quot;&quot;); background-size: cover; background-position: center;">
+        <div class="container">
+            <h1>APPLICATION PROCESS</h1>
+            <p>Take the first step toward an exceptional education</p>
         </div>
-
-        <!-- STEP INDICATOR -->
-        <div class="step-indicator">
-            <div class="step-circle active" id="s1c">1</div>
-            <div class="step-line" id="l1"></div>
-            <div class="step-circle" id="s2c">2</div>
-            <div class="step-line" id="l2"></div>
-            <div class="step-circle" id="s3c">3</div>
-        </div>
-
-        <!-- ===== STEP 1 : LEVEL ===== -->
-        <div class="step-content active" id="step1">
-            <div class="level-grid">
-                <div class="level-card" data-level="olevel" onclick="pickLevel('olevel')">
-                    <span class="icon">📚</span>
-                    <h3>O-LEVEL</h3>
-                    <p>Senior 1 – Senior 4</p>
-                    <p style="font-size:13px;color:#8899a8;margin-top:12px;">Click to apply</p>
-                </div>
-                <div class="level-card" data-level="alevel" onclick="pickLevel('alevel')">
-                    <span class="icon">🎓</span>
-                    <h3>A-LEVEL</h3>
-                    <p>Senior 5 – Senior 6</p>
-                    <p style="font-size:13px;color:#8899a8;margin-top:12px;">Click to apply</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- ===== STEP 2 : STREAM (only for A-Level) ===== -->
-        <div class="step-content" id="step2">
-            <h2 style="text-align:center;color:#1a3a4f;margin-bottom:6px;">Choose Your Stream</h2>
-            <p style="text-align:center;color:#666;margin-bottom:30px;">Select the stream you want to pursue</p>
-
-            <div class="stream-grid">
-                <div class="stream-card" onclick="pickStream('arts')">
-                    <span class="icon">🎨</span>
-                    <h3>Arts</h3>
-                    <ul>
-                        <li>History · Geography · Economics</li>
-                        <li>Literature · CRE</li>
-                    </ul>
-                </div>
-                <div class="stream-card" onclick="pickStream('science')">
-                    <span class="icon">🔬</span>
-                    <h3>Science</h3>
-                    <ul>
-                        <li>Physics · Chemistry · Biology</li>
-                        <li>Mathematics · Computer Science</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div style="text-align:center;margin-top:28px;">
-                <button class="btn btn-secondary" onclick="goTo(1)">← Back</button>
-            </div>
-        </div>
-
-        <!-- ===== STEP 3 : FORM ===== -->
-        <div class="step-content" id="step3">
-            <div class="form-wrap">
-                <h2 id="formTitle">Application Form</h2>
-                <p class="sub" id="formSub">Please fill in all required fields</p>
-
-                <form id="appForm" onsubmit="submitApp(event)">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label>First Name *</label>
-                            <input type="text" id="fname" required />
-                        </div>
-                        <div class="form-group">
-                            <label>Last Name *</label>
-                            <input type="text" id="lname" required />
+    </section>
+    <section class="page-content">
+        <div class="container">
+            <div class="content-section">
+                <!-- Application Process Steps -->
+                <div class="process-grid">
+                    <div class="process-card">
+                        <div class="process-number">1</div>
+                        <div class="process-info">
+                            <h3>Submitting required documents</h3>
+                            <p>After the PLE or UNEB results are verified, the applicant must duly fill the school's admission form including all the required bio data of the student and parent/guardian. The applicant may access the admission form from the Director of Studies (D.O.S) office at Kongunga High School or fill the provided online admission form. Please note that a fee of <strong>UGX 10,000</strong> shall be charged when picking the admission letter</p>
                         </div>
                     </div>
-
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label>Date of Birth *</label>
-                            <input type="date" id="dob" required />
-                        </div>
-                        <div class="form-group">
-                            <label>Gender *</label>
-                            <select id="gender" required>
-                                <option value="">Select</option>
-                                <option value="Male">Male</option>
-                                <option value="Female">Female</option>
-                            </select>
+                    <div class="process-card">
+                        <div class="process-number">2</div>
+                        <div class="process-info">
+                            <h3>Paying application fees</h3>
+                            <p>The school fees must be paid in full to the school account in Centenary Bank, or United Bank for Africa, before you come to school. Please pick the Bank slip from the school Bursar</p>
                         </div>
                     </div>
-
-                    <div class="form-group">
-                        <label>Email Address *</label>
-                        <input type="email" id="email" required />
+                    <div class="process-card">
+                        <div class="process-number">3</div>
+                        <div class="process-info">
+                            <h3>After completing the online application.</h3>
+                            <p>Our admissions team will verify your submitted academic results and documents. And after verification, Within 24 hours of submission, you will receive a confirmation email with your student number.</p>
+                        </div>
                     </div>
-
-                    <div class="form-group">
-                        <label>Phone Number *</label>
-                        <input type="tel" id="phone" required />
+                </div>
+                <!-- SCHOOL REQUIREMENTS - TWO-COLUMN TABLE (BOYS | GIRLS) -->
+                <h2 style="text-align: center; font-size: 36px; color: #1a3a4f; margin: 50px 0 10px;">School Requirements</h2>
+                <p style="text-align: center; font-size: 17px; color: #666; margin-bottom: 40px;">Please ensure you have all the required items before reporting to school</p>
+                <div class="requirements-container">
+                    <!-- DAY SCHOLARS' REQUIREMENTS -->
+                    <div class="requirements-table">
+                        <div class="table-header">
+                            <h3>DAY SCHOLARS' REQUIREMENTS</h3>
+                            <div class="sub-title">Essential items for day scholars</div>
+                        </div>
+                        <div class="table-content">
+                            <table class="gender-table">
+                                <thead>
+                                    <tr>
+                                        <th>BOYS</th>
+                                        <th>GIRLS</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <ul>
+                                                <li>2 White shirts</li>
+                                                <li>2 Pairs of school trousers/shorts</li>
+                                                <li>1 School tie</li>
+                                                <li>1 School sweater</li>
+                                                <li>1 Pair of black leather shoes</li>
+                                                <li>3 Pairs of socks</li>
+                                                <li>Sportswear</li>
+                                                <li>Underwear</li>
+                                                <li>Handkerchiefs</li>
+                                                <li>Shoe polish and brush</li>
+                                                <li>School bag</li>
+                                                <li>Mathematical set</li>
+                                                <li>Pens and pencils</li>
+                                            </ul>
+                                        </td>
+                                        <td>
+                                            <ul>
+                                                <li>2 White blouses</li>
+                                                <li>2 School dresses/skirts</li>
+                                                <li>1 School tie</li>
+                                                <li>1 School sweater</li>
+                                                <li>1 Pair of black leather shoes</li>
+                                                <li>3 Pairs of socks</li>
+                                                <li>Sportswear</li>
+                                                <li>Underwear</li>
+                                                <li>Hair comb/brush</li>
+                                                <li>Hair accessories (black/navy blue)</li>
+                                                <li>School bag</li>
+                                                <li>Mathematical set</li>
+                                                <li>Pens and pencils</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
-
-                    <div class="form-group">
-                        <label>Residential Address *</label>
-                        <input type="text" id="address" required />
+                    <!-- BOARDING REQUIREMENTS -->
+                    <div class="requirements-table">
+                        <div class="table-header">
+                            <h3>BOARDING REQUIREMENTS</h3>
+                            <div class="sub-title">Essential items for boarding students</div>
+                        </div>
+                        <div class="table-content">
+                            <table class="gender-table">
+                                <thead>
+                                    <tr>
+                                        <th>BOYS</th>
+                                        <th>GIRLS</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <ul>
+                                                <li>2 Pairs of pajamas</li>
+                                                <li>Vests/T-shirts</li>
+                                                <li>Underwear</li>
+                                                <li>Slippers</li>
+                                                <li>Shoe polish and brush</li>
+                                                <li>Hair cutting fee (if applicable)</li>
+                                                <li>Handkerchiefs</li>
+                                                <li>Mattress (3 × 6) – 1</li>
+                                                <li>2 Pairs of bed sheets</li>
+                                                <li>1 Blanket</li>
+                                                <li>1 Mosquito net</li>
+                                                <li>1 Pillow</li>
+                                                <li>2 Pillowcases</li>
+                                                <li>1 Plastic basin</li>
+                                            </ul>
+                                        </td>
+                                        <td>
+                                            <ul>
+                                                <li>2 Night dresses/pajamas</li>
+                                                <li>Sanitary towels</li>
+                                                <li>Underwear</li>
+                                                <li>Slippers</li>
+                                                <li>Hair comb/brush</li>
+                                                <li>Hair net</li>
+                                                <li>Head scarf (if applicable)</li>
+                                                <li>Mattress (3 × 6) – 1</li>
+                                                <li>2 Pairs of bed sheets</li>
+                                                <li>1 Blanket</li>
+                                                <li>1 Mosquito net</li>
+                                                <li>1 Pillow</li>
+                                                <li>2 Pillowcases</li>
+                                                <li>1 Plastic basin</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
-
-                    <div class="form-group">
-                        <label>Previous School *</label>
-                        <input type="text" id="prevSchool" required />
+                </div>
+                <!-- Note -->
+                <div style="background: #fff8f0; padding: 18px 25px; border-radius: 8px; border-left: 4px solid #e67e22; margin: 10px 0 40px;">
+                    <p style="margin: 0; font-size: 15px; color: #555;">
+                        <strong>Note:</strong> All items should be clearly labeled with the student's name. Please ensure you have all required items before reporting to school.
+                    </p>
+                </div>
+                <!-- Bank Details -->
+                <div class="bank-info">
+                    <h3>Bank Payment Details</h3>
+                    <div class="bank-details-grid">
+                        <div class="bank-item">
+                            <p><strong>Centenary Bank</strong></p>
+                            <p>Bukedea Branch</p>
+                            <p>Account Name: Kongunga High School</p>
+                            <p>Account Number: 1234567890</p>
+                        </div>
+                        <div class="bank-item">
+                            <p><strong>United Bank for Africa (UBA)</strong></p>
+                            <p>Mbale Branch</p>
+                            <p>Account Name: Kongunga High School</p>
+                            <p>Account Number: 9876543210</p>
+                        </div>
                     </div>
-
-                    <div class="form-group">
-                        <label>Parent / Guardian Name *</label>
-                        <input type="text" id="guardian" required />
+                </div>
+                <!-- Online Application -->
+                <div class="online-application-section">
+                    <h2 style="color: white;">Start Your Application</h2>
+                    <p style="margin-bottom: 30px;">Select your level below to begin the application process</p>
+                    <div class="level-buttons">
+                        <button class="level-btn olevel" id="olevelBtn">O-LEVEL</button>
+                        <button class="level-btn alevel" id="alevelBtn">A-LEVEL</button>
                     </div>
-
-                    <div class="form-group">
-                        <label>Parent / Guardian Contact *</label>
-                        <input type="tel" id="guardianPhone" required />
+                    <div id="alevelOptions" style="display: none; margin-top: 30px;">
+                        <div class="alevel-options">
+                            <button class="stream-btn" id="artsBtn">ARTS</button>
+                            <button class="stream-btn" id="scienceBtn">SCIENCE</button>
+                        </div>
+                        <div style="text-align: center; margin-top: 15px;">
+                            <button class="back-btn" id="backToLevelBtn">← Back</button>
+                        </div>
                     </div>
-
-                    <div class="form-group">
-                        <label>Why do you want to join Kongunga High School?</label>
-                        <textarea id="reason" placeholder="Tell us why you want to study at Kongunga..."></textarea>
-                    </div>
-
-                    <div style="text-align:center;margin-top:12px;">
-                        <button type="submit" class="btn btn-success">Submit Application →</button>
-                    </div>
-                </form>
-            </div>
-
-            <div style="text-align:center;margin-top:22px;">
-                <button class="btn btn-secondary" onclick="goTo(2)">← Back</button>
+                </div>
+                <!-- ============================================================
+                     O-LEVEL FORM WITH FILE UPLOAD
+                     ============================================================ -->
+                <div id="olevelForm" class="application-form-container" style="display: none;">
+                    <h3 style="color: #1a3a4f;">O-Level Application Form</h3>
+                    <form id="olevelAdmissionForm" method="POST" action="submit_application.html" enctype="multipart/form-data">
+                        
+                        <div class="form-group"><label>Student's Full Name *</label><input type="text" id="olevelName" name="student_name" required></div>
+                        <div class="form-group"><label>Date of Birth *</label><input type="date" id="olevelDob" name="date_of_birth" required></div>
+                        <div class="form-group"><label>Gender *</label><select id="olevelGender" name="gender" required><option value="">Select</option><option value="male">Male</option><option value="female">Female</option></select></div>
+                        <div class="form-group"><label>Applying for Class *</label><select id="olevelClass" name="class" required><option value="">Select Class</option><option>S.1</option><option>S.2</option><option>S.3</option><option>S.4</option></select></div>
+                        <div class="form-group"><label>Parent/Guardian Name *</label><input type="text" id="olevelParent" name="parent_name" required></div>
+                        <div class="form-group"><label>Phone Number *</label><input type="tel" id="olevelPhone" name="parent_phone" required></div>
+                        <div class="form-group"><label>Email ID *</label><input type="email" id="olevelEmail" name="parent_email" required></div>
+                        <div class="form-group"><label>Address *</label><textarea id="olevelAddress" name="address" rows="3" required></textarea></div>
+                        <div class="form-group"><label>Previous School</label><input type="text" id="olevelPrevSchool" name="previous_school"></div>
+                        
+                        <!-- FILE UPLOAD - PLE Result Slip -->
+                        <div class="form-group">
+                            <div class="file-upload-wrapper">
+                                <label class="file-label">📄 Upload PLE Result Slip *</label>
+                                <input type="file" id="olevelResultSlip" name="result_slip" accept=".pdf,.jpg,.jpeg,.png" required>
+                                <div class="file-hint">Accepted formats: <strong>PDF, JPG, JPEG, PNG</strong> (Max size: 5MB)</div>
+                                <div class="file-name-display" id="olevelFileName">
+                                    <span id="olevelFileNameText"></span>
+                                    <span class="remove-file" onclick="removeFile('olevelResultSlip', 'olevelFileName')">✕ Remove</span>
+                                </div>
+                            </div>
+                        </div>
+                        <input type="hidden" name="level" value="O-Level">
+                        <button type="submit" class="btn-submit">Submit Application</button>
+                    </form>
+                    <div id="olevelMessage" class="form-message"></div>
+                    <div style="text-align: center; margin-top: 20px;"><button class="back-btn" id="backFromOlevel">← Back to Selection</button></div>
+                </div>
+                <!-- ============================================================
+                     A-LEVEL ARTS FORM WITH FILE UPLOAD
+                     ============================================================ -->
+                <div id="artsForm" class="application-form-container" style="display: none;">
+                    <h3 style="color: #1a3a4f;">A-Level ARTS Application Form</h3>
+                    <form id="artsAdmissionForm" method="POST" action="submit_application.html" enctype="multipart/form-data">
+                        
+                        <div class="form-group"><label>Student's Full Name *</label><input type="text" id="artsName" name="student_name" required></div>
+                        <div class="form-group"><label>Date of Birth *</label><input type="date" id="artsDob" name="date_of_birth" required></div>
+                        <div class="form-group"><label>Gender *</label><select id="artsGender" name="gender" required><option value="">Select</option><option value="male">Male</option><option value="female">Female</option></select></div>
+                        <div class="form-group"><label>Applying for Class *</label><select id="artsClass" name="class" required><option value="">Select Class</option><option>S.5</option><option>S.6</option></select></div>
+                        
+                        <div class="subjects-section"><h3>Principal Subjects (Choose EXACTLY 3)</h3>
+                            <div class="subjects-grid" id="artsPrincipals">
+                                <div class="subject-checkbox"><input type="checkbox" name="principal_subjects[]" value="History"> <label>History</label></div>
+                                <div class="subject-checkbox"><input type="checkbox" name="principal_subjects[]" value="Economics"> <label>Economics</label></div>
+                                <div class="subject-checkbox"><input type="checkbox" name="principal_subjects[]" value="Geography"> <label>Geography</label></div>
+                                <div class="subject-checkbox"><input type="checkbox" name="principal_subjects[]" value="Literature in English"> <label>Literature in English</label></div>
+                                <div class="subject-checkbox"><input type="checkbox" name="principal_subjects[]" value="Christian Religious Education"> <label>Religious Education</label></div>
+                                <div class="subject-checkbox"><input type="checkbox" name="principal_subjects[]" value="Entrepreneurship"> <label>Entrepreneurship</label></div>
+                                <div class="subject-checkbox"><input type="checkbox" name="principal_subjects[]" value="Fine Art"> <label>Fine Art</label></div>
+                                <div class="subject-checkbox"><input type="checkbox" name="principal_subjects[]" value="Luganda"> <label>Ateso</label></div>
+                                <div class="subject-checkbox"><input type="checkbox" name="principal_subjects[]" value="Kiswahili"> <label>Kiswahili</label></div>
+                                <div class="subject-checkbox"><input type="checkbox" name="principal_subjects[]" value="French"> <label>French</label></div>
+                            </div>
+                            <div class="selection-limit" id="artsPrincipalWarning">You have selected 0/3 principal subjects</div>
+                        </div>
+                        
+                        <div class="subjects-section"><h3>Subsidiary Subjects (Choose EXACTLY 2)</h3>
+                            <div class="subjects-grid" id="artsSubsidiaries">
+                                <div class="subject-checkbox"><input type="checkbox" name="subsidiary_subjects[]" value="General Paper"> <label>General Paper</label></div>
+                                <div class="subject-checkbox"><input type="checkbox" name="subsidiary_subjects[]" value="Computer Science"> <label>Computer Science</label></div>
+                                <div class="subject-checkbox"><input type="checkbox" name="subsidiary_subjects[]" value="Agriculture"> <label>Agriculture</label></div>
+                                <div class="subject-checkbox"><input type="checkbox" name="subsidiary_subjects[]" value="Subsidiary Mathematics"> <label>Subsidiary Mathematics</label></div>
+                                <div class="subject-checkbox"><input type="checkbox" name="subsidiary_subjects[]" value="Physical Education"> <label>Physical Education</label></div>
+                            </div>
+                            <div class="selection-limit" id="artsSubsidiaryWarning">You have selected 0/2 subsidiary subjects</div>
+                        </div>
+                        <div class="form-group"><label>Parent/Guardian Name *</label><input type="text" id="artsParent" name="parent_name" required></div>
+                        <div class="form-group"><label>Phone Number *</label><input type="tel" id="artsPhone" name="parent_phone" required></div>
+                        <div class="form-group"><label>Email ID *</label><input type="email" id="artsEmail" name="parent_email" required></div>
+                        <div class="form-group"><label>Address *</label><textarea id="artsAddress" name="address" rows="3" required></textarea></div>
+                        <div class="form-group"><label>Previous School</label><input type="text" id="artsPrevSchool" name="previous_school"></div>
+                        
+                        <!-- FILE UPLOAD - UCE Result Slip -->
+                        <div class="form-group">
+                            <div class="file-upload-wrapper">
+                                <label class="file-label">📄 Upload UCE Result Slip *</label>
+                                <input type="file" id="artsResultSlip" name="result_slip" accept=".pdf,.jpg,.jpeg,.png" required>
+                                <div class="file-hint">Accepted formats: <strong>PDF, JPG, JPEG, PNG</strong> (Max size: 5MB)</div>
+                                <div class="file-name-display" id="artsFileName">
+                                    <span id="artsFileNameText"></span>
+                                    <span class="remove-file" onclick="removeFile('artsResultSlip', 'artsFileName')">✕ Remove</span>
+                                </div>
+                            </div>
+                        </div>
+                        <input type="hidden" name="level" value="A-Level">
+                        <input type="hidden" name="stream" value="ARTS">
+                        <button type="submit" class="btn-submit">Submit Application</button>
+                    </form>
+                    <div id="artsMessage" class="form-message"></div>
+                    <div style="text-align: center; margin-top: 20px;"><button class="back-btn" id="backFromArts">← Back to Selection</button></div>
+                </div>
+                <!-- ============================================================
+                     A-LEVEL SCIENCE FORM WITH FILE UPLOAD
+                     ============================================================ -->
+                <div id="scienceForm" class="application-form-container" style="display: none;">
+                    <h3 style="color: #1a3a4f;">A-Level SCIENCE Application Form</h3>
+                    <form id="scienceAdmissionForm" method="POST" action="submit_application.html" enctype="multipart/form-data">
+                        
+                        <div class="form-group"><label>Student's Full Name *</label><input type="text" id="scienceName" name="student_name" required></div>
+                        <div class="form-group"><label>Date of Birth *</label><input type="date" id="scienceDob" name="date_of_birth" required></div>
+                        <div class="form-group"><label>Gender *</label><select id="scienceGender" name="gender" required><option value="">Select</option><option value="male">Male</option><option value="female">Female</option></select></div>
+                        <div class="form-group"><label>Applying for Class *</label><select id="scienceClass" name="class" required><option value="">Select Class</option><option>S.5</option><option>S.6</option></select></div>
+                        
+                        <div class="subjects-section"><h3>Principal Subjects (Choose EXACTLY 3)</h3>
+                            <div class="subjects-grid" id="sciencePrincipals">
+                                <div class="subject-checkbox"><input type="checkbox" name="principal_subjects[]" value="Physics"> <label>Physics</label></div>
+                                <div class="subject-checkbox"><input type="checkbox" name="principal_subjects[]" value="Chemistry"> <label>Chemistry</label></div>
+                                <div class="subject-checkbox"><input type="checkbox" name="principal_subjects[]" value="Biology"> <label>Biology</label></div>
+                                <div class="subject-checkbox"><input type="checkbox" name="principal_subjects[]" value="Mathematics"> <label>Mathematics</label></div>
+                                <div class="subject-checkbox"><input type="checkbox" name="principal_subjects[]" value="Computer Science"> <label>Computer Science</label></div>
+                                <div class="subject-checkbox"><input type="checkbox" name="principal_subjects[]" value="Agriculture"> <label>Agriculture</label></div>
+                            </div>
+                            <div class="selection-limit" id="sciencePrincipalWarning">You have selected 0/3 principal subjects</div>
+                        </div>
+                        
+                        <div class="subjects-section"><h3>Subsidiary Subjects (Choose EXACTLY 2)</h3>
+                            <div class="subjects-grid" id="scienceSubsidiaries">
+                                <div class="subject-checkbox"><input type="checkbox" name="subsidiary_subjects[]" value="General Paper"> <label>General Paper</label></div>
+                                <div class="subject-checkbox"><input type="checkbox" name="subsidiary_subjects[]" value="Subsidiary Mathematics"> <label>Subsidiary Mathematics</label></div>
+                                <div class="subject-checkbox"><input type="checkbox" name="subsidiary_subjects[]" value="Computer Science"> <label>Computer Science</label></div>
+                                <div class="subject-checkbox"><input type="checkbox" name="subsidiary_subjects[]" value="Biology"> <label>Biology (as subsidiary)</label></div>
+                                <div class="subject-checkbox"><input type="checkbox" name="subsidiary_subjects[]" value="Chemistry"> <label>Chemistry (as subsidiary)</label></div>
+                                <div class="subject-checkbox"><input type="checkbox" name="subsidiary_subjects[]" value="Physics"> <label>Physics (as subsidiary)</label></div>
+                            </div>
+                            <div class="selection-limit" id="scienceSubsidiaryWarning">You have selected 0/2 subsidiary subjects</div>
+                        </div>
+                        <div class="form-group"><label>Parent/Guardian Name *</label><input type="text" id="scienceParent" name="parent_name" required></div>
+                        <div class="form-group"><label>Phone Number *</label><input type="tel" id="sciencePhone" name="parent_phone" required></div>
+                        <div class="form-group"><label>Email ID *</label><input type="email" id="scienceEmail" name="parent_email" required></div>
+                        <div class="form-group"><label>Address *</label><textarea id="scienceAddress" name="address" rows="3" required></textarea></div>
+                        <div class="form-group"><label>Previous School</label><input type="text" id="sciencePrevSchool" name="previous_school"></div>
+                        
+                        <!-- FILE UPLOAD - UCE Result Slip -->
+                        <div class="form-group">
+                            <div class="file-upload-wrapper">
+                                <label class="file-label">📄 Upload UCE Result Slip *</label>
+                                <input type="file" id="scienceResultSlip" name="result_slip" accept=".pdf,.jpg,.jpeg,.png" required>
+                                <div class="file-hint">Accepted formats: <strong>PDF, JPG, JPEG, PNG</strong> (Max size: 5MB)</div>
+                                <div class="file-name-display" id="scienceFileName">
+                                    <span id="scienceFileNameText"></span>
+                                    <span class="remove-file" onclick="removeFile('scienceResultSlip', 'scienceFileName')">✕ Remove</span>
+                                </div>
+                            </div>
+                        </div>
+                        <input type="hidden" name="level" value="A-Level">
+                        <input type="hidden" name="stream" value="SCIENCE">
+                        <button type="submit" class="btn-submit">Submit Application</button>
+                    </form>
+                    <div id="scienceMessage" class="form-message"></div>
+                    <div style="text-align: center; margin-top: 20px;"><button class="back-btn" id="backFromScience">← Back to Selection</button></div>
+                </div>
+                <a href="admission.html" class="back-link">← Back to Admissions</a>
             </div>
         </div>
-
-    </div>
-
-    <!-- ===== FOOTER ===== -->
+    </section>
     <footer>
         <div class="container">
             <div class="footer-grid">
-                <div>
-                    <h3>Kongunga High School</h3>
-                    <p>Affiliated to UNEB<br />Est. 1995</p>
-                    <p style="margin-top:10px;">📞 +256 786706774<br />✉️ info@kongungahighschool.edu<br />📍 Kachumbala, Bukedea</p>
-                </div>
-                <div>
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="academics.html">Academics</a></li>
-                        <li><a href="admission.html">Admission</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4>Resources</h4>
-                    <ul>
-                        <li><a href="#">School Calendar</a></li>
-                        <li><a href="#">Library Catalog</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4>Follow Us</h4>
-                    <ul>
-                        <li><a href="#">Facebook</a></li>
-                        <li><a href="#">Instagram</a></li>
-                        <li><a href="#">Twitter</a></li>
-                    </ul>
-                </div>
+                <div><h3>Kongunga High School</h3><p>Affiliated to UNEB<br>Est. 1995</p></div>
+                <div><h4>Quick Links</h4><ul><li><a href="about.html">About Us</a></li><li><a href="academics.html">Academics</a></li><li><a href="admission.html">Admission</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+                <div><h4>Resources</h4><ul><li><a href="#">School Calendar</a></li><li><a href="#">Lunch Menu</a></li><li><a href="#">Library Catalog</a></li></ul></div>
+                <div><h4>Follow Us</h4><div class="social"><a href="#">Facebook</a> <a href="#">Instagram</a> <a href="#">Twitter</a></div></div>
             </div>
-            <div class="copyright">
-                <p>&copy; 2026 Kongunga High School. All rights reserved.</p>
-            </div>
+            <div class="copyright"><p>&copy; 2026 Kongunga High School. All rights reserved.</p></div>
         </div>
     </footer>
-
-    <!-- ========================================================= -->
-    <!--  JAVASCRIPT  –  handles all navigation & form submission   -->
-    <!-- ========================================================= -->
+    <script src="../js/main.js"></script>
     <script>
-        // ----- state -----
-        let chosenLevel = ''; // 'olevel' or 'alevel'
-        let chosenStream = ''; // 'arts' or 'science' (only for A-Level)
+        // ============================================================
+        // FIXED: AUTH CHECK (fixed the undefined variable)
+        // ============================================================
+        const isUserAuthenticated = false; // Set to true if user is logged in
 
-        // ----- step navigation -----
-        function goTo(step) {
-            // hide all steps
-            document.querySelectorAll('.step-content').forEach(el => el.classList.remove('active'));
-            // show target
-            const target = document.getElementById('step' + step);
-            if (target) target.classList.add('active');
-
-            // update circles
-            for (let i = 1; i <= 3; i++) {
-                const circle = document.getElementById('s' + i + 'c');
-                if (!circle) continue;
-                circle.classList.remove('active', 'completed');
-                if (i === step) circle.classList.add('active');
-                else if (i < step) circle.classList.add('completed');
+        function checkAuthAndSubmit(formElement, callback) {
+            if (!isUserAuthenticated) {
+                alert('Please login or create an account to submit your application.');
+                window.location.href = '/login/?next=/apply/';
+                return false;
             }
-            // update lines
-            for (let i = 1; i <= 2; i++) {
-                const line = document.getElementById('l' + i);
-                if (line) {
-                    line.classList.toggle('active', i < step);
+            if (callback) callback();
+            return true;
+        }
+
+        // ============================================================
+        // FILE UPLOAD - DISPLAY FILE NAME
+        // ============================================================
+        function setupFileUpload(inputId, displayId, textId) {
+            var input = document.getElementById(inputId);
+            var display = document.getElementById(displayId);
+            var text = document.getElementById(textId);
+            
+            if (input) {
+                input.addEventListener('change', function() {
+                    if (this.files && this.files[0]) {
+                        var file = this.files[0];
+                        var fileSize = (file.size / 1024 / 1024).toFixed(2);
+                        
+                        // Validate file type
+                        var allowedTypes = ['pdf', 'jpg', 'jpeg', 'png'];
+                        if (!allowedTypes.includes(file.name.split('.').pop().toLowerCase())) {
+                            alert('Please upload a valid file format: PDF, JPG, JPEG, or PNG');
+                            this.value = '';
+                            display.classList.remove('show');
+                            return;
+                        }
+                        
+                        // Validate file size (5MB max)
+                        if (file.size > 5 * 1024 * 1024) {
+                            alert('File size exceeds 5MB limit. Please compress your file.');
+                            this.value = '';
+                            display.classList.remove('show');
+                            return;
+                        }
+                        
+                        text.textContent = '📎 ' + file.name + ' (' + fileSize + ' MB)';
+                        display.classList.add('show');
+                    }
+                });
+            }
+        }
+
+        function removeFile(inputId, displayId) {
+            var input = document.getElementById(inputId);
+            var display = document.getElementById(displayId);
+            if (input) {
+                input.value = '';
+                display.classList.remove('show');
+            }
+        }
+
+        // Setup file uploads for all forms
+        setupFileUpload('olevelResultSlip', 'olevelFileName', 'olevelFileNameText');
+        setupFileUpload('artsResultSlip', 'artsFileName', 'artsFileNameText');
+        setupFileUpload('scienceResultSlip', 'scienceFileName', 'scienceFileNameText');
+
+        // ============================================================
+        // FIXED: FORM TOGGLE LOGIC - WORKS CORRECTLY NOW
+        // ============================================================
+        var olevelBtn = document.getElementById('olevelBtn');
+        var alevelBtn = document.getElementById('alevelBtn');
+        var alevelOptions = document.getElementById('alevelOptions');
+        var artsBtn = document.getElementById('artsBtn');
+        var scienceBtn = document.getElementById('scienceBtn');
+        var backToLevelBtn = document.getElementById('backToLevelBtn');
+        var olevelForm = document.getElementById('olevelForm');
+        var artsForm = document.getElementById('artsForm');
+        var scienceForm = document.getElementById('scienceForm');
+        var backFromOlevel = document.getElementById('backFromOlevel');
+        var backFromArts = document.getElementById('backFromArts');
+        var backFromScience = document.getElementById('backFromScience');
+
+        function hideAllForms() {
+            if (olevelForm) olevelForm.style.display = 'none';
+            if (artsForm) artsForm.style.display = 'none';
+            if (scienceForm) scienceForm.style.display = 'none';
+            if (alevelOptions) alevelOptions.style.display = 'none';
+        }
+
+        // FIXED: O-LEVEL BUTTON - Shows O-Level form directly
+        if (olevelBtn) {
+            olevelBtn.addEventListener('click', function() {
+                hideAllForms();
+                if (olevelForm) {
+                    olevelForm.style.display = 'block';
+                    // Scroll to the form
+                    setTimeout(function() {
+                        olevelForm.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }, 100);
                 }
-            }
+            });
         }
 
-        // ----- pick level (O or A) -----
-        function pickLevel(level) {
-            chosenLevel = level;
-            chosenStream = ''; // reset stream
-
-            // highlight card
-            document.querySelectorAll('.level-card').forEach(c => c.classList.remove('selected'));
-            const card = document.querySelector('.level-card[data-level="' + level + '"]');
-            if (card) card.classList.add('selected');
-
-            if (level === 'olevel') {
-                // O‑Level → straight to form (skip stream step)
-                goTo(3);
-                updateFormTitle('O‑Level');
-            } else if (level === 'alevel') {
-                // A‑Level → go to stream selection
-                goTo(2);
-            }
-        }
-
-        // ----- pick stream (Arts / Science) -----
-        function pickStream(stream) {
-            chosenStream = stream;
-
-            // highlight card
-            document.querySelectorAll('.stream-card').forEach(c => c.classList.remove('selected'));
-            // find the clicked card (using event target)
-            const cards = document.querySelectorAll('.stream-card');
-            for (let c of cards) {
-                if (c.textContent.toLowerCase().includes(stream)) {
-                    c.classList.add('selected');
-                    break;
+        // FIXED: A-LEVEL BUTTON - Shows Arts/Science options
+        if (alevelBtn) {
+            alevelBtn.addEventListener('click', function() {
+                hideAllForms();
+                if (alevelOptions) {
+                    alevelOptions.style.display = 'block';
+                    // Scroll to the options
+                    setTimeout(function() {
+                        alevelOptions.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }, 100);
                 }
-            }
-
-            // go to form
-            goTo(3);
-            const label = stream.charAt(0).toUpperCase() + stream.slice(1);
-            updateFormTitle('A‑Level (' + label + ')');
+            });
         }
 
-        // ----- update form title & subtitle -----
-        function updateFormTitle(levelLabel) {
-            const title = document.getElementById('formTitle');
-            const sub = document.getElementById('formSub');
-            if (!title || !sub) return;
-
-            if (chosenLevel === 'olevel') {
-                title.textContent = 'O‑Level Application Form';
-                sub.textContent = 'Senior 1 – Senior 4 · Apply to join our O‑Level program';
-            } else if (chosenLevel === 'alevel' && chosenStream) {
-                const s = chosenStream.charAt(0).toUpperCase() + chosenStream.slice(1);
-                title.textContent = 'A‑Level ' + s + ' Application Form';
-                sub.textContent = 'Senior 5 – Senior 6 · ' + s + ' stream · Apply to join our A‑Level program';
-            } else {
-                title.textContent = 'Application Form';
-                sub.textContent = 'Please fill in all required fields';
-            }
+        // FIXED: Back from A-Level options
+        if (backToLevelBtn) {
+            backToLevelBtn.addEventListener('click', function() {
+                if (alevelOptions) alevelOptions.style.display = 'none';
+            });
         }
 
-        // ----- submit application -----
-        function submitApp(e) {
-            e.preventDefault();
+        // FIXED: ARTS BUTTON - Shows Arts form
+        if (artsBtn) {
+            artsBtn.addEventListener('click', function() {
+                hideAllForms();
+                if (artsForm) {
+                    artsForm.style.display = 'block';
+                    setTimeout(function() {
+                        artsForm.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }, 100);
+                }
+            });
+        }
 
-            const fname = document.getElementById('fname').value.trim();
-            const lname = document.getElementById('lname').value.trim();
-            const email = document.getElementById('email').value.trim();
-            const phone = document.getElementById('phone').value.trim();
+        // FIXED: SCIENCE BUTTON - Shows Science form
+        if (scienceBtn) {
+            scienceBtn.addEventListener('click', function() {
+                hideAllForms();
+                if (scienceForm) {
+                    scienceForm.style.display = 'block';
+                    setTimeout(function() {
+                        scienceForm.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }, 100);
+                }
+            });
+        }
 
-            if (!fname || !lname || !email || !phone) {
-                alert('Please fill in all required fields marked with *');
+        // FIXED: Back from O-Level
+        if (backFromOlevel) {
+            backFromOlevel.addEventListener('click', function() {
+                if (olevelForm) olevelForm.style.display = 'none';
+            });
+        }
+
+        // FIXED: Back from Arts
+        if (backFromArts) {
+            backFromArts.addEventListener('click', function() {
+                if (artsForm) artsForm.style.display = 'none';
+            });
+        }
+
+        // FIXED: Back from Science
+        if (backFromScience) {
+            backFromScience.addEventListener('click', function() {
+                if (scienceForm) scienceForm.style.display = 'none';
+            });
+        }
+
+        // ============================================================
+        // SUBJECT SELECTION LIMITS
+        // ============================================================
+        var artsPrincipals = document.querySelectorAll('#artsPrincipals input[type="checkbox"]');
+        var artsSubsidiaries = document.querySelectorAll('#artsSubsidiaries input[type="checkbox"]');
+        var artsPrincipalWarning = document.getElementById('artsPrincipalWarning');
+        var artsSubsidiaryWarning = document.getElementById('artsSubsidiaryWarning');
+
+        function updateArtsSelection() {
+            var selectedPrincipals = document.querySelectorAll('#artsPrincipals input[type="checkbox"]:checked').length;
+            var selectedSubsidiaries = document.querySelectorAll('#artsSubsidiaries input[type="checkbox"]:checked').length;
+            
+            if (artsPrincipalWarning) artsPrincipalWarning.textContent = 'You have selected ' + selectedPrincipals + '/3 principal subjects';
+            if (artsSubsidiaryWarning) artsSubsidiaryWarning.textContent = 'You have selected ' + selectedSubsidiaries + '/2 subsidiary subjects';
+            
+            document.querySelectorAll('#artsPrincipals input[type="checkbox"]').forEach(function(cb) {
+                if (!cb.checked) cb.disabled = (selectedPrincipals >= 3);
+            });
+            
+            document.querySelectorAll('#artsSubsidiaries input[type="checkbox"]').forEach(function(cb) {
+                if (!cb.checked) cb.disabled = (selectedSubsidiaries >= 2);
+            });
+        }
+
+        artsPrincipals.forEach(function(cb) { cb.addEventListener('change', updateArtsSelection); });
+        artsSubsidiaries.forEach(function(cb) { cb.addEventListener('change', updateArtsSelection); });
+
+        var sciencePrincipals = document.querySelectorAll('#sciencePrincipals input[type="checkbox"]');
+        var scienceSubsidiaries = document.querySelectorAll('#scienceSubsidiaries input[type="checkbox"]');
+        var sciencePrincipalWarning = document.getElementById('sciencePrincipalWarning');
+        var scienceSubsidiaryWarning = document.getElementById('scienceSubsidiaryWarning');
+
+        function updateScienceSelection() {
+            var selectedPrincipals = document.querySelectorAll('#sciencePrincipals input[type="checkbox"]:checked').length;
+            var selectedSubsidiaries = document.querySelectorAll('#scienceSubsidiaries input[type="checkbox"]:checked').length;
+            
+            if (sciencePrincipalWarning) sciencePrincipalWarning.textContent = 'You have selected ' + selectedPrincipals + '/3 principal subjects';
+            if (scienceSubsidiaryWarning) scienceSubsidiaryWarning.textContent = 'You have selected ' + selectedSubsidiaries + '/2 subsidiary subjects';
+            
+            document.querySelectorAll('#sciencePrincipals input[type="checkbox"]').forEach(function(cb) {
+                if (!cb.checked) cb.disabled = (selectedPrincipals >= 3);
+            });
+            
+            document.querySelectorAll('#scienceSubsidiaries input[type="checkbox"]').forEach(function(cb) {
+                if (!cb.checked) cb.disabled = (selectedSubsidiaries >= 2);
+            });
+        }
+
+        sciencePrincipals.forEach(function(cb) { cb.addEventListener('change', updateScienceSelection); });
+        scienceSubsidiaries.forEach(function(cb) { cb.addEventListener('change', updateScienceSelection); });
+
+        // ============================================================
+        // FORM SUBMISSIONS (Frontend validation only)
+        // ============================================================
+        document.getElementById('olevelAdmissionForm')?.addEventListener('submit', function(e) {
+            var fileInput = document.getElementById('olevelResultSlip');
+            if (!fileInput.files || !fileInput.files[0]) {
+                e.preventDefault();
+                alert('Please upload the PLE Result Slip.');
                 return;
             }
+            if (!checkAuthAndSubmit(this)) {
+                e.preventDefault();
+            }
+        });
 
-            // show success screen inside the form
-            const form = document.getElementById('appForm');
-            form.innerHTML = `
-                <div style="text-align:center;padding:30px 10px;">
-                    <div style="font-size:64px;margin-bottom:16px;">✅</div>
-                    <h2 style="color:#27ae60;">Application Submitted!</h2>
-                    <p style="font-size:18px;color:#333;margin:16px 0;">
-                        Thank you, <strong>${fname} ${lname}</strong>!<br>
-                        Your application to Kongunga High School has been received.
-                    </p>
-                    <div style="background:#e9f7ed;padding:18px;border-radius:12px;max-width:420px;margin:16px auto;text-align:left;">
-                        <p style="margin:4px 0;">📧 Confirmation sent to <strong>${email}</strong></p>
-                        <p style="margin:4px 0;">📞 We'll contact you on <strong>${phone}</strong></p>
-                    </div>
-                    <p style="color:#777;">You will receive further instructions within 48 hours.</p>
-                    <div style="margin-top:28px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
-                        <a href="index.html" class="btn btn-primary">Return Home</a>
-                        <a href="admission.html" class="btn btn-secondary">View Other Programs</a>
-                    </div>
-                </div>
-            `;
-        }
+        document.getElementById('artsAdmissionForm')?.addEventListener('submit', function(e) {
+            var fileInput = document.getElementById('artsResultSlip');
+            if (!fileInput.files || !fileInput.files[0]) {
+                e.preventDefault();
+                alert('Please upload the UCE Result Slip.');
+                return;
+            }
+            
+            var selectedPrincipals = document.querySelectorAll('#artsPrincipals input[type="checkbox"]:checked').length;
+            if (selectedPrincipals !== 3) {
+                e.preventDefault();
+                alert('Please select exactly 3 principal subjects');
+                return;
+            }
+            
+            var selectedSubsidiaries = document.querySelectorAll('#artsSubsidiaries input[type="checkbox"]:checked').length;
+            if (selectedSubsidiaries !== 2) {
+                e.preventDefault();
+                alert('Please select exactly 2 subsidiary subjects');
+                return;
+            }
+            
+            if (!checkAuthAndSubmit(this)) {
+                e.preventDefault();
+            }
+        });
 
-        // ----- ensure step 1 is active on page load -----
-        document.addEventListener('DOMContentLoaded', function() {
-            goTo(1);
+        document.getElementById('scienceAdmissionForm')?.addEventListener('submit', function(e) {
+            var fileInput = document.getElementById('scienceResultSlip');
+            if (!fileInput.files || !fileInput.files[0]) {
+                e.preventDefault();
+                alert('Please upload the UCE Result Slip.');
+                return;
+            }
+            
+            var selectedPrincipals = document.querySelectorAll('#sciencePrincipals input[type="checkbox"]:checked').length;
+            if (selectedPrincipals !== 3) {
+                e.preventDefault();
+                alert('Please select exactly 3 principal subjects');
+                return;
+            }
+            
+            var selectedSubsidiaries = document.querySelectorAll('#scienceSubsidiaries input[type="checkbox"]:checked').length;
+            if (selectedSubsidiaries !== 2) {
+                e.preventDefault();
+                alert('Please select exactly 2 subsidiary subjects');
+                return;
+            }
+            
+            if (!checkAuthAndSubmit(this)) {
+                e.preventDefault();
+            }
         });
     </script>
-
 </body>
 </html>
